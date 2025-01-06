@@ -205,4 +205,15 @@ public class MathPart {
         }
     }
 
+    public static float dot(float[] vector1, float[] vector2) {
+        if (vector1.length != vector2.length) {
+            throw new IllegalArgumentException("Vector lengths must be equal.");
+        }
+        float res = 0;
+        for (int i = 0; i < vector1.length; i++) {
+            res += vector1[i] * vector2[i];
+        }
+        return res;
+    }
+
 }

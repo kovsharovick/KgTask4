@@ -4,21 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="Init">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/affineTransform/AffineTransform.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/exceptions/IndicesException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/MathPart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Matrix3x3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Matrix4x4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Quaternion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector4f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objwriter/ObjWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="getNew">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Point2f.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/MathPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/MathPart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector2f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector2f.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Polygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector4f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector4f.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/GraphicConveyor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/GraphicConveyor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,12 +124,22 @@
       <option name="project" value="LOCAL" />
       <updated>1736022062295</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="getNew">
+      <option name="closed" value="true" />
+      <created>1736200501133</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1736200501133</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init" />
+    <MESSAGE value="mathModule" />
+    <MESSAGE value="getNew" />
+    <option name="LAST_COMMIT_MESSAGE" value="getNew" />
   </component>
 </project>

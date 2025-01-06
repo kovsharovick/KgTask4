@@ -100,4 +100,8 @@ public class Vector2f {
         MathPart.normalize(this.values);
     }
 
+    public static float dot(Vector2f vector1, Vector2f vector2) {
+        return MathPart.dot(vector1.getValues(), vector2.getValues());
+    }
+
 }

@@ -15,8 +15,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.io.IOException;
 import java.io.File;
-import javax.vecmath.Vector3f;
+//import javax.vecmath.Vector3f;
 
+import ru.vsu.cs.yesikov.math.*;
 import ru.vsu.cs.yesikov.model.Model;
 import ru.vsu.cs.yesikov.objreader.ObjReader;
 import ru.vsu.cs.yesikov.render_engine.Camera;
@@ -34,7 +35,7 @@ public class GuiController {
     private Model mesh = null;
 
     private Camera camera = new Camera(
-            new Vector3f(0, 00, 100),
+            new Vector3f(0, 0, 100),
             new Vector3f(0, 0, 0),
             1.0F, 1, 0.01F, 100);
 
@@ -80,8 +81,8 @@ public class GuiController {
         try {
             String fileContent = Files.readString(fileName);
             mesh = ObjReader.read(fileContent);
-            mesh.recalculateNormals(mesh);
-            Model.triangulate(mesh);
+            //mesh.recalculateNormals(mesh);
+            //Model.triangulate(mesh);
             // todo: обработка ошибок
         } catch (IOException exception) {
 

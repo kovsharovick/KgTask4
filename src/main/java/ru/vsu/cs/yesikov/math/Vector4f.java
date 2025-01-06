@@ -113,4 +113,8 @@ public class Vector4f {
     public void normalize() {
         MathPart.normalize(this.values);
     }
+
+    public static float dot(Vector4f vector1, Vector4f vector2) {
+        return MathPart.dot(vector1.getValues(), vector2.getValues());
+    }
 }
