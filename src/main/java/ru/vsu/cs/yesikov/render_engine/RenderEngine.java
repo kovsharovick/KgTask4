@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
 import javax.vecmath.*;
 import ru.vsu.cs.yesikov.model.Model;
+import ru.vsu.cs.yesikov.math.*;
 
 import static ru.vsu.cs.yesikov.render_engine.GraphicConveyor.*;
 

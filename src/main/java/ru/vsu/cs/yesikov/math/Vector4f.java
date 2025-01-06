@@ -1,24 +1,26 @@
 package ru.vsu.cs.yesikov.math;
 
-public class Vector3f {
+public class Vector4f {
 
-    private final float[] values;
+    private float[] values;
 
-    public Vector3f(float[] values) {
-        if (values.length != 3) {
-            throw new IllegalArgumentException("Vector size must be 3.");
+    public Vector4f(float[] values) {
+        if (values.length != 4) {
+            throw new IllegalArgumentException("Vector size must be 4.");
         }
         this.values = new float[values.length];
         this.values[0] = values[0];
         this.values[1] = values[1];
         this.values[2] = values[2];
+        this.values[3] = values[3];
     }
 
-    public Vector3f(float x, float y, float z) {
-        values = new float[3];
+    public Vector4f(float x, float y, float z, float w) {
+        values = new float[4];
         this.values[0] = x;
         this.values[1] = y;
         this.values[2] = z;
+        this.values[3] = w;
     }
 
     public float[] getValues() {
@@ -37,16 +39,8 @@ public class Vector3f {
         return values[2];
     }
 
-    public void vector3fto4f(Vector4f v) {
-        values[0] = v.getValues()[0];
-        values[1] = v.getValues()[1];
-        values[2] = v.getValues()[2];
-    }
-
-    public void vector3fto4f(float[] v) {
-        values[0] = v[0];
-        values[1] = v[1];
-        values[2] = v[2];
+    public float w() {
+        return values[3];
     }
 
     @Override
@@ -54,9 +48,10 @@ public class Vector3f {
         final float eps = 1e-7f;
         if (this == o) return true;
         if (o == null || this.getClass() != o.getClass()) return false;
-        return Math.abs(values[0] - ((Vector3f) o).values[0]) < eps
-                && Math.abs(values[1] - ((Vector3f) o).values[1]) < eps
-                && Math.abs(values[2] - ((Vector3f) o).values[2]) < eps;
+        return Math.abs(values[0] - ((Vector4f) o).values[0]) < eps
+                && Math.abs(values[1] - ((Vector4f) o).values[1]) < eps
+                && Math.abs(values[2] - ((Vector4f) o).values[2]) < eps
+                && Math.abs(values[3] - ((Vector4f) o).values[3]) < eps;
     }
 
     public float getLength() {
@@ -67,7 +62,7 @@ public class Vector3f {
         MathPart.add(this.values, vector);
     }
 
-    public void add(Vector3f vector) {
+    public void add(Vector4f vector) {
         MathPart.add(this.values, vector.getValues());
     }
 
@@ -75,7 +70,7 @@ public class Vector3f {
         MathPart.add(this.values, vector);
     }
 
-    public void sub(Vector3f vector) {
+    public void sub(Vector4f vector) {
         MathPart.add(this.values, vector.getValues());
     }
 
@@ -87,12 +82,11 @@ public class Vector3f {
         MathPart.multiply(this.values, vector);
     }
 
-    public void multiply(Vector3f vector) {
+    public void multiply(Vector4f vector) {
         MathPart.multiply(this.values, vector.getValues());
     }
 
     public void normalize() {
         MathPart.normalize(this.values);
     }
-
 }
