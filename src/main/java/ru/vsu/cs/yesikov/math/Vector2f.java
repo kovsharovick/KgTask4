@@ -52,12 +52,28 @@ public class Vector2f {
         MathPart.add(this.values, vector.getValues());
     }
 
+    public static Vector2f getNewAdd(float[] vector1, float[] vector2) {
+        return new Vector2f(MathPart.getNewAdd(vector1, vector2));
+    }
+
+    public static Vector2f getNewAdd(Vector2f vector1, Vector2f vector2) {
+        return new Vector2f(MathPart.getNewAdd(vector1.getValues(), vector2.getValues()));
+    }
+
     public void sub(float[] vector) {
         MathPart.add(this.values, vector);
     }
 
     public void sub(Vector2f vector) {
         MathPart.add(this.values, vector.getValues());
+    }
+
+    public static Vector2f getNewSub(float[] vector1, float[] vector2) {
+        return new Vector2f(MathPart.getNewSub(vector1, vector2));
+    }
+
+    public static Vector2f getNewSub(Vector2f vector1, Vector2f vector2) {
+        return new Vector2f(MathPart.getNewSub(vector1.getValues(), vector2.getValues()));
     }
 
     public void divByScalar(float scalar) {
@@ -70,6 +86,14 @@ public class Vector2f {
 
     public void multiply(Vector2f vector) {
         MathPart.multiply(this.values, vector.getValues());
+    }
+
+    public static Vector2f getNewMul(float[] vector1, float[] vector2) {
+        return new Vector2f(MathPart.getNewMultiply(vector1, vector2));
+    }
+
+    public static Vector2f getNewMul(Vector2f vector1, Vector2f vector2) {
+        return new Vector2f(MathPart.getNewMultiply(vector1.getValues(), vector2.getValues()));
     }
 
     public void normalize() {
