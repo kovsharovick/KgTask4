@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="first step">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +45,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "thirdperson",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Java, C++, Python/Java/KgTask4/src",
+    "last_opened_file_path": "C:/Users/PC/IdeaProjects/KgTask2_8-Rasterization",
     "onboarding.tips.debug.path": "D:/Java, C++, Python/Java/KgTask4/src/main/java/ru/vsu/cs/yesikov/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -106,9 +108,20 @@
       <option name="presentableId" value="Default" />
       <updated>1735929486935</updated>
     </task>
+    <task id="LOCAL-00001" summary="first step">
+      <option name="closed" value="true" />
+      <created>1736096642347</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1736096642347</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="first step" />
+    <option name="LAST_COMMIT_MESSAGE" value="first step" />
   </component>
 </project>

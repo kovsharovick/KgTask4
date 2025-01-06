@@ -5,9 +5,7 @@ import ru.vsu.cs.yesikov.math.Vector3f;
 import ru.vsu.cs.yesikov.model.Model;
 import ru.vsu.cs.yesikov.model.Polygon;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class ObjReader {
 
@@ -174,48 +172,4 @@ public class ObjReader {
             }
         }
     }
-
-    //Метод примитивной триангуляции
-    public static void triangulate(Model model) {
-        ArrayList<Polygon> triangulatedPolygons = new ArrayList<>();
-
-        for (Polygon polygon : model.polygons) {
-            ArrayList<Integer> vertexIndices = polygon.getVertexIndices();
-
-            for (int i = 1; i < vertexIndices.size() - 1; i++) {
-                Polygon triangle = new Polygon();
-                ArrayList<Integer> vert = new ArrayList<>();
-                vert.add(vertexIndices.get(0));
-                vert.add(vertexIndices.get(i));
-                vert.add(vertexIndices.get(i + 1));
-                triangle.setVertexIndices(vert);
-                triangulatedPolygons.add(triangle);
-            }
-        }
-
-        model.polygons = triangulatedPolygons;
-    }
-
-    // метод пересчитывания нормалей полигона
-    public static void recalculateNormals(Model model) {
-//		model.normals.clear();
-//		for (Polygon polygon : model.polygons) {
-//			ArrayList<Integer> vertexIndices = polygon.getVertexIndices();
-//			if (vertexIndices.size() < 3) {
-//				continue;
-//			}
-//
-//			Vector3f v0 = model.vertices.get(vertexIndices.get(0));
-//			Vector3f v1 = model.vertices.get(vertexIndices.get(1));
-//			Vector3f v2 = model.vertices.get(vertexIndices.get(2));
-//			Vector3f edge1 = v1.minus(v0);
-//			Vector3f edge2 = v2.minus(v0);
-//			Vector3f normal = edge1.vecMult(edge2).getNormalized();
-//
-//			model.normals.add(normal);
-//			ArrayList<Integer> normalIndices = new ArrayList<>();
-//			normalIndices.add(model.normals.size() - 1);
-//			polygon.setNormalIndices(normalIndices);
-    }
-
 }

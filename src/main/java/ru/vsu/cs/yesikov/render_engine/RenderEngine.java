@@ -55,4 +55,9 @@ public class RenderEngine {
                         resultPoints.get(0).y);
         }
     }
+    public static void rasterizePoligon(){
+
+    }
+
+
 }
