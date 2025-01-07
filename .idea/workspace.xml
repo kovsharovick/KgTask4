@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_01_2025_2_45_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_01_2025_2_45_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_01_2025_2_45__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/BarycentricCoordinates.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Coloring.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Shadow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/GraphicConveyor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/GraphicConveyor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +43,7 @@
     "Application.Simple3DViewer.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging mathpart",
+    "git-widget-placeholder": "mathpart",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Vova/Downloads/kg3/KgTask3_8-main",
     "onboarding.tips.debug.path": "D:/Java, C++, Python/Java/KgTask4/src/main/java/ru/vsu/cs/yesikov/Main.java",
