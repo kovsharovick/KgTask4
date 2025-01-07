@@ -2,7 +2,7 @@ package ru.vsu.cs.yesikov.math;
 
 public class Vector4f {
 
-    private float[] values;
+    private final float[] values;
 
     public Vector4f(float[] values) {
         if (values.length != 4) {
@@ -27,20 +27,36 @@ public class Vector4f {
         return values;
     }
 
-    public float x() {
+    public float getX() {
         return values[0];
     }
 
-    public float y() {
+    public float getY() {
         return values[1];
     }
 
-    public float z() {
+    public float getZ() {
         return values[2];
     }
 
-    public float w() {
+    public float getW() {
         return values[3];
+    }
+
+    public void setX(float x) {
+        this.values[0] = x;
+    }
+
+    public void setY(float y) {
+        this.values[1] = y;
+    }
+
+    public void setZ(float z) {
+        this.values[2] = z;
+    }
+
+    public void setW(float w) {
+        this.values[3] = w;
     }
 
     @Override
@@ -75,11 +91,11 @@ public class Vector4f {
     }
 
     public void sub(float[] vector) {
-        MathPart.add(this.values, vector);
+        MathPart.sub(this.values, vector);
     }
 
     public void sub(Vector4f vector) {
-        MathPart.add(this.values, vector.getValues());
+        MathPart.sub(this.values, vector.getValues());
     }
 
     public static Vector4f getNewSub(float[] vector1, float[] vector2) {
@@ -117,4 +133,5 @@ public class Vector4f {
     public static float dot(Vector4f vector1, Vector4f vector2) {
         return MathPart.dot(vector1.getValues(), vector2.getValues());
     }
+
 }

@@ -2,6 +2,8 @@ package ru.vsu.cs.yesikov.affineTransform;
 
 import ru.vsu.cs.yesikov.math.*;
 import ru.vsu.cs.yesikov.model.Model;
+
+import static ru.vsu.cs.yesikov.math.Matrix4x4.multiplyByVector;
 import static ru.vsu.cs.yesikov.math.Quaternion.multiplyQuaternions;
 
 public class AffineTransform {
@@ -16,13 +18,13 @@ public class AffineTransform {
         affineTransform.multiply(T.getValues());
         Vector4f v4;
         for (Vector3f v : model.vertices) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 1);
-            float[] res = affineTransform.multiplyByVector(v4);
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 1);
+            float[] res = multiplyByVector(affineTransform, v4).getValues();
             v.vector3fto4f(res);
         }
         for (Vector3f v : model.normals) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 0);
-            float[] res = affineTransform.multiplyByVector(v4);
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 0);
+            float[] res = multiplyByVector(affineTransform, v4).getValues();
             v.vector3fto4f(res);
         }
     }
@@ -37,13 +39,13 @@ public class AffineTransform {
         affineTransform.multiply(T.getValues());
         Vector4f v4;
         for (Vector3f v : model.vertices) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 1);
-            float[] res = affineTransform.multiplyByVector(v4);
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 1);
+            float[] res = multiplyByVector(affineTransform, v4).getValues();
             v.vector3fto4f(res);
         }
         for (Vector3f v : model.normals) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 0);
-            float[] res = affineTransform.multiplyByVector(v4);
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 0);
+            float[] res = multiplyByVector(affineTransform, v4).getValues();
             v.vector3fto4f(res);
         }
     }
@@ -58,13 +60,13 @@ public class AffineTransform {
         });
         Vector4f v4;
         for (Vector3f v : model.vertices) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 1);
-            float[] res = scale.multiplyByVector(v4);
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 1);
+            float[] res = multiplyByVector(scale, v4).getValues();
             v.vector3fto4f(res);
         }
         for (Vector3f v : model.normals) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 0);
-            float[] res = scale.multiplyByVector(v4);
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 0);
+            float[] res = multiplyByVector(scale, v4).getValues();
             v.vector3fto4f(res);
         }
     }
@@ -89,13 +91,13 @@ public class AffineTransform {
         Matrix4x4 rotate = q.toRotationMatrix();
         Vector4f v4;
         for (Vector3f v : model.vertices) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 1);
-            float[] res = rotate.multiplyByVector(v4);
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 1);
+            float[] res = multiplyByVector(rotate, v4).getValues();
             v.vector3fto4f(res);
         }
         for (Vector3f v : model.normals) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 0);
-            float[] res = rotate.multiplyByVector(v4);;
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 0);
+            float[] res = multiplyByVector(rotate, v4).getValues();
             v.vector3fto4f(res);
         }
     }
@@ -159,13 +161,13 @@ public class AffineTransform {
         }
         Vector4f v4;
         for (Vector3f v : model.vertices) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 1);
-            float[] res = rotate.multiplyByVector(v4);
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 1);
+            float[] res = multiplyByVector(rotate, v4).getValues();
             v.vector3fto4f(res);
         }
         for (Vector3f v : model.normals) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 0);
-            float[] res = rotate.multiplyByVector(v4);
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 0);
+            float[] res = multiplyByVector(rotate, v4).getValues();
             v.vector3fto4f(res);
         }
     }
@@ -179,13 +181,13 @@ public class AffineTransform {
         });
         Vector4f v4;
         for (Vector3f v : model.vertices) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 1);
-            float[] res = translation.multiplyByVector(v4);
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 1);
+            float[] res = multiplyByVector(translation, v4).getValues();
             v.vector3fto4f(res);
         }
         for (Vector3f v : model.normals) {
-            v4 = new Vector4f(v.x(), v.y(), v.z(), 0);
-            float[] res = translation.multiplyByVector(v4);
+            v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 0);
+            float[] res = multiplyByVector(translation, v4).getValues();
             v.vector3fto4f(res);
         }
     }

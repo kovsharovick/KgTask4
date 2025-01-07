@@ -15,6 +15,20 @@ public class Matrix4x4 {
         return values;
     }
 
+    public float getValOfIndex(int colum, int row) {
+        if (values.length < row || values[0].length < colum) {
+            throw new IllegalArgumentException("Matrix size 4x4.");
+        }
+        return values[row][colum];
+    }
+
+    public void setValOfIndex(int colum, int row, float value) {
+        if (values.length < row || values[0].length < colum) {
+            throw new IllegalArgumentException("Matrix size 4x4.");
+        }
+        values[row][colum] = value;
+    }
+
     public static Matrix4x4 createSingleMatrix() {
         return new Matrix4x4(new float[][]{
                 {1, 0, 0, 0},
@@ -56,12 +70,28 @@ public class Matrix4x4 {
         MathPart.add(values, matrix.getValues());
     }
 
+    public static Matrix4x4 getNewAdd(float[][] matrix1, float[][] matrix2) {
+        return new Matrix4x4(MathPart.getNewAdd(matrix1, matrix2));
+    }
+
+    public static Matrix4x4 getNewAdd(Matrix4x4 matrix1, Matrix4x4 matrix2) {
+        return new Matrix4x4(MathPart.getNewAdd(matrix1.getValues(), matrix2.getValues()));
+    }
+
     public void sub(float[][] matrix) {
         MathPart.sub(values, matrix);
     }
 
     public void sub(Matrix4x4 matrix) {
         MathPart.sub(values, matrix.getValues());
+    }
+
+    public static Matrix4x4 getNewSub(float[][] matrix1, float[][] matrix2) {
+        return new Matrix4x4(MathPart.getNewSub(matrix1, matrix2));
+    }
+
+    public static Matrix4x4 getNewSub(Matrix4x4 matrix1, Matrix4x4 matrix2) {
+        return new Matrix4x4(MathPart.getNewSub(matrix1.getValues(), matrix2.getValues()));
     }
 
     public void multiply(float[][] matrix) {
@@ -72,12 +102,20 @@ public class Matrix4x4 {
         MathPart.multiply(values, matrix.getValues());
     }
 
-    public float[] multiplyByVector(float[] vector) {
-        return MathPart.getNewMultiply(values, vector);
+    public static Matrix4x4 getNewMul(float[][] matrix1, float[][] matrix2) {
+        return new Matrix4x4(MathPart.getNewMultiply(matrix1, matrix2));
     }
 
-    public float[] multiplyByVector(Vector4f vector) {
-        return MathPart.getNewMultiply(values, vector.getValues());
+    public static Matrix4x4 getNewMul(Matrix4x4 matrix1, Matrix4x4 matrix2) {
+        return new Matrix4x4(MathPart.getNewMultiply(matrix1.getValues(), matrix2.getValues()));
+    }
+
+    public static Vector4f multiplyByVector(float[][] matrix, float[] vector) {
+        return new Vector4f(MathPart.getNewMultiply(matrix, vector));
+    }
+
+    public static Vector4f multiplyByVector(Matrix4x4 matrix, Vector4f vector) {
+        return new Vector4f(MathPart.getNewMultiply(matrix.getValues(), vector.getValues()));
     }
 
     public void transposition() {

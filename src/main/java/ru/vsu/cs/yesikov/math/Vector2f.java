@@ -23,12 +23,20 @@ public class Vector2f {
         return values;
     }
 
-    public float x() {
+    public float getX() {
         return values[0];
     }
 
-    public float y() {
+    public float getY() {
         return values[1];
+    }
+
+    public void setX(float x) {
+        this.values[0] = x;
+    }
+
+    public void setY(float y) {
+        this.values[1] = y;
     }
 
     @Override
@@ -61,11 +69,11 @@ public class Vector2f {
     }
 
     public void sub(float[] vector) {
-        MathPart.add(this.values, vector);
+        MathPart.sub(this.values, vector);
     }
 
     public void sub(Vector2f vector) {
-        MathPart.add(this.values, vector.getValues());
+        MathPart.sub(this.values, vector.getValues());
     }
 
     public static Vector2f getNewSub(float[] vector1, float[] vector2) {

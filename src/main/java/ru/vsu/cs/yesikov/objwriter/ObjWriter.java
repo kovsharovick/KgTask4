@@ -27,26 +27,26 @@ public class ObjWriter {
 
     private static void writeVertices(Writer writer, ArrayList<Vector3f> vertices, String separator) throws IOException {
         for (Vector3f vertex : vertices) {
-            writer.append("v").append(separator).append(String.valueOf(vertex.x())).append(" ")
-                    .append(String.valueOf(vertex.y())).append(" ")
-                    .append(String.valueOf(vertex.z())).append("\n");
+            writer.append("v").append(separator).append(String.valueOf(vertex.getX())).append(" ")
+                    .append(String.valueOf(vertex.getY())).append(" ")
+                    .append(String.valueOf(vertex.getZ())).append("\n");
             writer.flush();
         }
     }
 
     private static void writeTextureVertices(Writer writer, ArrayList<Vector2f> textureVertices, String separator) throws IOException {
         for (Vector2f textureVertex : textureVertices) {
-            writer.append("vt").append(separator).append(String.valueOf(textureVertex.x())).append(separator)
-                    .append(String.valueOf(textureVertex.y())).append("\n");
+            writer.append("vt").append(separator).append(String.valueOf(textureVertex.getX())).append(separator)
+                    .append(String.valueOf(textureVertex.getY())).append("\n");
             writer.flush();
         }
     }
 
     private static void writeNormals(Writer writer, ArrayList<Vector3f> normals, String separator) throws IOException {
         for (Vector3f normal : normals) {
-            writer.append("vn").append(separator).append(String.valueOf(normal.x())).append(separator)
-                    .append(String.valueOf(normal.y())).append(" ")
-                    .append(String.valueOf(normal.z())).append("\n");
+            writer.append("vn").append(separator).append(String.valueOf(normal.getX())).append(separator)
+                    .append(String.valueOf(normal.getY())).append(" ")
+                    .append(String.valueOf(normal.getZ())).append("\n");
             writer.flush();
         }
     }

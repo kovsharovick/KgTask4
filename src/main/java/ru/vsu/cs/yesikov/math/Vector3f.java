@@ -25,16 +25,28 @@ public class Vector3f {
         return values;
     }
 
-    public float x() {
+    public float getX() {
         return values[0];
     }
 
-    public float y() {
+    public float getY() {
         return values[1];
     }
 
-    public float z() {
+    public float getZ() {
         return values[2];
+    }
+
+    public void setX(float x) {
+        this.values[0] = x;
+    }
+
+    public void setY(float y) {
+        this.values[1] = y;
+    }
+
+    public void setZ(float z) {
+        this.values[2] = z;
     }
 
     public void vector3fto4f(Vector4f v) {
@@ -80,11 +92,11 @@ public class Vector3f {
     }
 
     public void sub(float[] vector) {
-        MathPart.add(this.values, vector);
+        MathPart.sub(this.values, vector);
     }
 
     public void sub(Vector3f vector) {
-        MathPart.add(this.values, vector.getValues());
+        MathPart.sub(this.values, vector.getValues());
     }
 
     public static Vector3f getNewSub(float[] vector1, float[] vector2) {
