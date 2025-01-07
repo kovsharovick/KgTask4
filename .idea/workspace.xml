@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_01_2025_2_45_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_01_2025_2_45_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_01_2025_2_45__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/BarycentricCoordinates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Coloring.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Shadow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,11 +31,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="MathPart" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -44,43 +49,11 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
     "Application.Simple3DViewer.executor": "Run",
-    "JUnit.MathTest.executor": "Run",
-    "JUnit.MathTest.testAddMatrix3x3.executor": "Run",
-    "JUnit.MathTest.testAddMatrix4x4.executor": "Run",
-    "JUnit.MathTest.testAddVector4f.executor": "Run",
-    "JUnit.MathTest.testDivByScalarVector2f.executor": "Run",
-    "JUnit.MathTest.testDivByScalarVector3f.executor": "Run",
-    "JUnit.MathTest.testDivByScalarVector4f.executor": "Run",
-    "JUnit.MathTest.testDotVector2f.executor": "Run",
-    "JUnit.MathTest.testDotVector3f.executor": "Run",
-    "JUnit.MathTest.testDotVector4f.executor": "Run",
-    "JUnit.MathTest.testGetLengthVector2f.executor": "Run",
-    "JUnit.MathTest.testGetLengthVector3f.executor": "Run",
-    "JUnit.MathTest.testGetLengthVector4f.executor": "Run",
-    "JUnit.MathTest.testGetNewAddMatrix3x3.executor": "Run",
-    "JUnit.MathTest.testGetNewAddMatrix4x4.executor": "Run",
-    "JUnit.MathTest.testGetNewMulMatrix3x3.executor": "Run",
-    "JUnit.MathTest.testGetNewMulMatrix4x4.executor": "Debug",
-    "JUnit.MathTest.testGetNewMulMatrix4x4OnVector4f.executor": "Run",
-    "JUnit.MathTest.testGetNewSubMatrix3x3.executor": "Run",
-    "JUnit.MathTest.testGetNewSubMatrix4x4.executor": "Run",
-    "JUnit.MathTest.testMulMatrix3x3.executor": "Run",
-    "JUnit.MathTest.testMulMatrix3x3OnVector3f.executor": "Run",
-    "JUnit.MathTest.testMulMatrix4x4.executor": "Run",
-    "JUnit.MathTest.testMulMatrix4x4OnVector4f.executor": "Run",
-    "JUnit.MathTest.testNormalizeVector2f.executor": "Run",
-    "JUnit.MathTest.testNormalizeVector3f.executor": "Run",
-    "JUnit.MathTest.testNormalizeVector4f.executor": "Run",
-    "JUnit.MathTest.testSubMatrix3x3.executor": "Run",
-    "JUnit.MathTest.testSubMatrix4x4.executor": "Run",
-    "JUnit.MathTest.testSubVector3f.executor": "Run",
-    "JUnit.MathTest.testTranspositionMatrix3x3.executor": "Run",
-    "JUnit.MathTest.testTranspositionMatrix4x4.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "mathpart",
+    "git-widget-placeholder": "Merging mathpart",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Vova/Desktop/Java, C++, Python/3DViewer_task_4-master",
+    "last_opened_file_path": "C:/Users/Vova/Downloads/kg3/KgTask3_8-main",
     "onboarding.tips.debug.path": "D:/Java, C++, Python/Java/KgTask4/src/main/java/ru/vsu/cs/yesikov/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -89,8 +62,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\java\ru\vsu\cs\yesikov" />
       <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\java\ru\vsu\cs\yesikov\math" />
+      <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\java\ru\vsu\cs\yesikov" />
       <recent name="D:\Java, C++, Python\Java\KgTask4\src" />
       <recent name="D:\Java, C++, Python\Java\KgTask4" />
       <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\resources" />
@@ -99,11 +72,7 @@
       <recent name="D:\Java, C++, Python\Java\KgTask4" />
       <recent name="D:\Java, C++, Python\Java\KgTask4\src" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="ru.vsu.cs" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ru.vsu.cs.yesikov.render_engine" />
       <recent name="ru.vsu.cs.yesikov.math" />
     </key>
   </component>
@@ -121,65 +90,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MathTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Simple3DViewer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.yesikov.Simple3DViewer" />
       <module name="KgTask4" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.vsu.cs.*" />
+          <option name="PATTERN" value="ru.vsu.cs.yesikov.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ru.vsu.cs" />
-      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.MathTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MathTest.testMulMatrix3x3OnVector3f" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KgTask4" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.vsu.cs.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.vsu.cs" />
-      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.MathTest" />
-      <option name="METHOD_NAME" value="testMulMatrix3x3OnVector3f" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MathTest.testTranspositionMatrix3x3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KgTask4" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.vsu.cs.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.vsu.cs" />
-      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.MathTest" />
-      <option name="METHOD_NAME" value="testTranspositionMatrix3x3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MathTest.testTranspositionMatrix4x4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KgTask4" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.vsu.cs.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.vsu.cs" />
-      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.MathTest" />
-      <option name="METHOD_NAME" value="testTranspositionMatrix4x4" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -187,10 +106,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.MathTest" />
-        <item itemvalue="JUnit.MathTest.testTranspositionMatrix3x3" />
-        <item itemvalue="JUnit.MathTest.testTranspositionMatrix4x4" />
-        <item itemvalue="JUnit.MathTest.testMulMatrix3x3OnVector3f" />
+        <item itemvalue="Application.Simple3DViewer" />
       </list>
     </recent_temporary>
   </component>
@@ -219,60 +135,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736200501133</updated>
     </task>
-    <task id="LOCAL-00003" summary="Init">
-      <option name="closed" value="true" />
-      <created>1736204842865</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1736204842865</updated>
-    </task>
-    <task id="LOCAL-00004" summary="correctMathModule">
-      <option name="closed" value="true" />
-      <created>1736251586042</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1736251586042</updated>
-    </task>
-    <task id="LOCAL-00005" summary="init">
-      <option name="closed" value="true" />
-      <created>1736276366041</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1736276366041</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Init" />
     <MESSAGE value="mathModule" />
     <MESSAGE value="getNew" />
-    <MESSAGE value="Init" />
-    <MESSAGE value="correctMathModule" />
     <MESSAGE value="init" />
     <option name="LAST_COMMIT_MESSAGE" value="init" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Matrix4x4.java</url>
-          <line>128</line>
-          <properties class="ru.vsu.cs.yesikov.math.Matrix4x4" method="clone">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

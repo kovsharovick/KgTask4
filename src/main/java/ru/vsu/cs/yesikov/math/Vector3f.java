@@ -21,6 +21,7 @@ public class Vector3f implements Vector{
         this.values[2] = z;
     }
 
+
     public float[] getValues() {
         return values;
     }
@@ -142,6 +143,9 @@ public class Vector3f implements Vector{
 
     public void normalize() {
         MathPart.normalize(this.values);
+    }
+    public static Vector3f getNewNormalize(Vector3f vector1){
+        return new Vector3f(MathPart.getNewNormalize(vector1.getValues()));
     }
 
     public static Vector3f normalize(Vector vector) {
