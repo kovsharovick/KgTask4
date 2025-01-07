@@ -1,0 +1,64 @@
+Index: src/main/java/ru/vsu/cs/yesikov/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ru/vsu/cs/yesikov/Main.java b/src/main/java/ru/vsu/cs/yesikov/render_engine/Main.java
+rename from src/main/java/ru/vsu/cs/yesikov/Main.java
+rename to src/main/java/ru/vsu/cs/yesikov/render_engine/Main.java
+--- a/src/main/java/ru/vsu/cs/yesikov/Main.java	(revision 661e28e455a70408099883d7a1d26cb5cad0ed0a)
++++ b/src/main/java/ru/vsu/cs/yesikov/render_engine/Main.java	(date 1736290737450)
+@@ -1,4 +1,6 @@
+-package ru.vsu.cs.yesikov;
++package ru.vsu.cs.yesikov.render_engine;
++
++import ru.vsu.cs.yesikov.Simple3DViewer;
+ 
+ import ru.vsu.cs.yesikov.math.Vector4f;
+ 
+Index: src/main/java/module-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>module ru.vsu.cs.yesikov {\r\n    requires javafx.controls;\r\n    requires javafx.fxml;\r\n    requires vecmath;\r\n    requires java.desktop;\r\n\r\n\r\n    opens ru.vsu.cs.yesikov to javafx.fxml;\r\n    exports ru.vsu.cs.yesikov;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/module-info.java b/src/main/java/module-info.java
+--- a/src/main/java/module-info.java	(revision 661e28e455a70408099883d7a1d26cb5cad0ed0a)
++++ b/src/main/java/module-info.java	(date 1736290737475)
+@@ -7,4 +7,6 @@
+ 
+     opens ru.vsu.cs.yesikov to javafx.fxml;
+     exports ru.vsu.cs.yesikov;
++    exports ru.vsu.cs.yesikov.render_engine;
++    opens ru.vsu.cs.yesikov.render_engine to javafx.fxml;
+ }
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>com</groupId>\r\n    <artifactId>cgvsu</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n    <name>Simple3DViewer</name>\r\n\r\n    <properties>\r\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n        <junit.version>5.8.1</junit.version>\r\n    </properties>\r\n\r\n    <dependencies>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-controls</artifactId>\r\n            <version>17.0.0.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-fxml</artifactId>\r\n            <version>17.0.0.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>java3d</groupId>\r\n            <artifactId>vecmath</artifactId>\r\n            <version>1.3.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.junit.jupiter</groupId>\r\n            <artifactId>junit-jupiter-api</artifactId>\r\n            <version>${junit.version}</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.junit.jupiter</groupId>\r\n            <artifactId>junit-jupiter-engine</artifactId>\r\n            <version>${junit.version}</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n    <build>\r\n        <plugins>\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-compiler-plugin</artifactId>\r\n                <version>3.8.1</version>\r\n                <configuration>\r\n                    <source>17</source>\r\n                    <target>17</target>\r\n                </configuration>\r\n            </plugin>\r\n            <!--\r\n            for building jar using maven:\r\n            mvn clean -Dmaven.clean.failOnError=false compile assembly:single -DskipTests=true\r\n            -->\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-jar-plugin</artifactId>\r\n                <version>3.2.0</version>\r\n                <configuration>\r\n                    <archive>\r\n                        <manifest>\r\n                            <addClasspath>true</addClasspath>\r\n                            <mainClass>ru.vsu.cs.yesikov.Main</mainClass>\r\n                        </manifest>\r\n                        <manifestEntries>\r\n                            <Class-Path>.</Class-Path>\r\n                        </manifestEntries>\r\n                    </archive>\r\n                </configuration>\r\n            </plugin>\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-assembly-plugin</artifactId>\r\n                <version>3.2.0</version>\r\n                <configuration>\r\n                    <finalName>cgvsu</finalName>\r\n                    <archive>\r\n                        <manifest>\r\n                            <mainClass>ru.vsu.cs.yesikov.Main</mainClass>\r\n                        </manifest>\r\n                    </archive>\r\n                    <descriptorRefs>\r\n                        <descriptorRef>jar-with-dependencies</descriptorRef>\r\n                    </descriptorRefs>\r\n                    <appendAssemblyId>false</appendAssemblyId>\r\n                </configuration>\r\n                <executions>\r\n                    <execution>\r\n                        <id>make-assembly</id>\r\n                        <phase>package</phase>\r\n                        <goals>\r\n                            <goal>single</goal>\r\n                        </goals>\r\n                    </execution>\r\n                </executions>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 661e28e455a70408099883d7a1d26cb5cad0ed0a)
++++ b/pom.xml	(date 1736290737480)
+@@ -67,7 +67,7 @@
+                     <archive>
+                         <manifest>
+                             <addClasspath>true</addClasspath>
+-                            <mainClass>ru.vsu.cs.yesikov.Main</mainClass>
++                            <mainClass>ru.vsu.cs.yesikov.render_engine.Main</mainClass>
+                         </manifest>
+                         <manifestEntries>
+                             <Class-Path>.</Class-Path>
+@@ -83,7 +83,7 @@
+                     <finalName>cgvsu</finalName>
+                     <archive>
+                         <manifest>
+-                            <mainClass>ru.vsu.cs.yesikov.Main</mainClass>
++                            <mainClass>ru.vsu.cs.yesikov.render_engine.Main</mainClass>
+                         </manifest>
+                     </archive>
+                     <descriptorRefs>
