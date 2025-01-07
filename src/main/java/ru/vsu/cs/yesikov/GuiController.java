@@ -81,8 +81,8 @@ public class GuiController {
         try {
             String fileContent = Files.readString(fileName);
             mesh = ObjReader.read(fileContent);
-            //mesh.recalculateNormals(mesh);
-            //Model.triangulate(mesh);
+            mesh.recalculateNormals(mesh);
+            Model.triangulate(mesh);
             // todo: обработка ошибок
         } catch (IOException exception) {
 
