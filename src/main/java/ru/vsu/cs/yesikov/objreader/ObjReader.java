@@ -23,7 +23,7 @@ public class ObjReader {
 			final String line = scanner.nextLine().trim();
 			lineInd++;
 
-			if (line.isEmpty() || line.startsWith("g")) { // Игнорируем пустые строки и комментарии
+			if (line.isEmpty() || line.startsWith("g") || line.startsWith("#") || line.startsWith("o") || line.startsWith("s") ) { // Игнорируем пустые строки и комментарии
 				continue;
 			}
 
