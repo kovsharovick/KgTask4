@@ -1,7 +1,6 @@
 package ru.vsu.cs.yesikov.render_engine;
 
-import javax.vecmath.Vector3f;
-import javax.vecmath.Matrix4f;
+import ru.vsu.cs.yesikov.math.*;
 
 public class Camera {
 
@@ -40,19 +39,19 @@ public class Camera {
         return target;
     }
 
-    public void movePosition(final Vector3f translation) {
+    public void movePosition(Vector3f translation) {
         this.position.add(translation);
     }
 
     public void moveTarget(final Vector3f translation) {
-        this.target.add(target);
+        this.target.add(translation);
     }
 
-    Matrix4f getViewMatrix() {
+    public Matrix4x4 getViewMatrix() {
         return GraphicConveyor.lookAt(position, target);
     }
 
-    Matrix4f getProjectionMatrix() {
+    public Matrix4x4 getProjectionMatrix() {
         return GraphicConveyor.perspective(fov, aspectRatio, nearPlane, farPlane);
     }
 
