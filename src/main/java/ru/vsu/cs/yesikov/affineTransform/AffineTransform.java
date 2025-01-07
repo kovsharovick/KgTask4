@@ -8,6 +8,22 @@ import static ru.vsu.cs.yesikov.math.Quaternion.multiplyQuaternions;
 
 public class AffineTransform {
 
+    public static Matrix4x4 getModelMatrix(float sX, float sY, float sZ,
+                                          float rX, float rY, float rZ,
+                                          float tX, float tY, float tZ) {
+        Matrix4x4 T = translation(tX, tY, tZ);
+        Matrix4x4 R = rotate(rX, rY, rZ, "xyz");
+        Matrix4x4 S = scale(sX, sY, sZ);
+        T.multiply(R);
+        T.multiply(S);
+        return T;
+    }
+
+    public static Matrix4x4 getRotateMatrix(float rX, float rY) {
+        return rotate(rX, rY, 0, "xyz");
+    }
+
+
     public static void affineTransform(Model model, int sX, int sY, int sZ,
                                        int rX, int rY, int rZ, String order,
                                        int tX, int tY, int tZ) {
@@ -29,14 +45,14 @@ public class AffineTransform {
         }
     }
 
-    public static void affineTransform(Model model, int sX, int sY, int sZ,
-                                       int rX, int rY, int rZ,
-                                       int tX, int tY, int tZ) {
-        Matrix4x4 T = translation(tX, tY, tZ);
+    public static void affineTransform(Model model, float sX, float sY, float sZ,
+                                       float rX, float rY, float rZ,
+                                       float tX, float tY, float tZ) {
+        Matrix4x4 affineTransform = translation(tX, tY, tZ);
         Matrix4x4 R = rotate(rX, rY, rZ, "xyz");
-        Matrix4x4 affineTransform = scale(sX, sY, sZ);
+        Matrix4x4 S = scale(sX, sY, sZ);
         affineTransform.multiply(R.getValues());
-        affineTransform.multiply(T.getValues());
+        affineTransform.multiply(S.getValues());
         Vector4f v4;
         for (Vector3f v : model.vertices) {
             v4 = new Vector4f(v.getX(), v.getY(), v.getZ(), 1);
@@ -71,7 +87,7 @@ public class AffineTransform {
         }
     }
 
-    public static void rotate(Model model, int rX, int rY, int rZ, String order) {
+    public static void rotate(Model model, float rX, float rY, float rZ, String order) {
         float radX = (float) Math.toRadians(rX);
         float radY = (float) Math.toRadians(rY);
         float radZ = (float) Math.toRadians(rZ);
@@ -102,7 +118,7 @@ public class AffineTransform {
         }
     }
 
-    public static void rotateEuler(Model model, int rX, int rY, int rZ, String order) {
+    public static void rotateEuler(Model model, float rX, float rY, float rZ, String order) {
         double radX = Math.toRadians(rX);
         double radY = Math.toRadians(rY);
         double radZ = Math.toRadians(rZ);
@@ -172,7 +188,7 @@ public class AffineTransform {
         }
     }
 
-    public static void translation(Model model, int tX, int tY, int tZ) {
+    public static void translation(Model model, float tX, float tY, float tZ) {
         Matrix4x4 translation = new Matrix4x4(new float[][]{
                 {1, 0, 0, tX},
                 {0, 1, 0, tY},
@@ -192,7 +208,7 @@ public class AffineTransform {
         }
     }
 
-    private static Matrix4x4 translation(int tX, int tY, int tZ) {
+    private static Matrix4x4 translation(float tX, float tY, float tZ) {
         return new Matrix4x4(new float[][]{
                 {1, 0, 0, tX},
                 {0, 1, 0, tY},
@@ -201,7 +217,7 @@ public class AffineTransform {
         });
     }
 
-    private static Matrix4x4 rotate(int rX, int rY, int rZ, String order) {
+    private static Matrix4x4 rotate(float rX, float rY, float rZ, String order) {
         float radX = (float) Math.toRadians(rX);
         float radY = (float) Math.toRadians(rY);
         float radZ = (float) Math.toRadians(rZ);
@@ -221,7 +237,7 @@ public class AffineTransform {
         return q.toRotationMatrix();
     }
 
-    private static Matrix4x4 scale(int sX, int sY, int sZ) {
+    private static Matrix4x4 scale(float sX, float sY, float sZ) {
         return new Matrix4x4(new float[][]{
                 {sX, 0, 0, 0},
                 {0, sY, 0, 0},

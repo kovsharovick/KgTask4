@@ -1,8 +1,8 @@
 package ru.vsu.cs.yesikov.math;
 
-public class Vector3f {
+public class Vector3f implements Vector{
 
-    private final float[] values;
+    private float[] values;
 
     public Vector3f(float[] values) {
         if (values.length != 3) {
@@ -25,6 +25,10 @@ public class Vector3f {
         return values;
     }
 
+    public void setValues(float[] v) {
+        values = v;
+    }
+
     public float getX() {
         return values[0];
     }
@@ -35,6 +39,11 @@ public class Vector3f {
 
     public float getZ() {
         return values[2];
+    }
+
+    @Override
+    public float getW() {
+        return 0;
     }
 
     public void setX(float x) {
@@ -79,7 +88,7 @@ public class Vector3f {
         MathPart.add(this.values, vector);
     }
 
-    public void add(Vector3f vector) {
+    public void add(Vector vector) {
         MathPart.add(this.values, vector.getValues());
     }
 
@@ -87,7 +96,7 @@ public class Vector3f {
         return new Vector3f(MathPart.getNewAdd(vector1, vector2));
     }
 
-    public static Vector3f getNewAdd(Vector3f vector1, Vector3f vector2) {
+    public static Vector3f getNewAdd(Vector vector1, Vector vector2) {
         return new Vector3f(MathPart.getNewAdd(vector1.getValues(), vector2.getValues()));
     }
 
@@ -95,7 +104,7 @@ public class Vector3f {
         MathPart.sub(this.values, vector);
     }
 
-    public void sub(Vector3f vector) {
+    public void sub(Vector vector) {
         MathPart.sub(this.values, vector.getValues());
     }
 
@@ -103,7 +112,7 @@ public class Vector3f {
         return new Vector3f(MathPart.getNewSub(vector1, vector2));
     }
 
-    public static Vector3f getNewSub(Vector3f vector1, Vector3f vector2) {
+    public static Vector3f getNewSub(Vector vector1, Vector vector2) {
         return new Vector3f(MathPart.getNewSub(vector1.getValues(), vector2.getValues()));
     }
 
@@ -115,7 +124,7 @@ public class Vector3f {
         MathPart.multiply(this.values, vector);
     }
 
-    public void multiply(Vector3f vector) {
+    public void multiply(Vector vector) {
         MathPart.multiply(this.values, vector.getValues());
     }
 
@@ -123,7 +132,7 @@ public class Vector3f {
         return new Vector3f(MathPart.getNewMultiply(vector1, vector2));
     }
 
-    public static Vector3f getNewMul(Vector3f vector1, Vector3f vector2) {
+    public static Vector3f getNewMul(Vector vector1, Vector vector2) {
         return new Vector3f(MathPart.getNewMultiply(vector1.getValues(), vector2.getValues()));
     }
 
@@ -131,8 +140,17 @@ public class Vector3f {
         MathPart.normalize(this.values);
     }
 
-    public static float dot(Vector3f vector1, Vector3f vector2) {
+    public static Vector3f normalize(Vector vector) {
+        MathPart.normalize(vector.getValues());
+        return new Vector3f(vector.getValues());
+    }
+
+    public static float dot(Vector vector1, Vector vector2) {
         return MathPart.dot(vector1.getValues(), vector2.getValues());
+    }
+
+    public Vector3f clone() {
+        return new Vector3f(values);
     }
 
 }

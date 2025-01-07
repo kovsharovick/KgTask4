@@ -1,8 +1,8 @@
 package ru.vsu.cs.yesikov.math;
 
-public class Matrix4x4 {
+public class Matrix4x4 implements Matrix{
 
-    private final float[][] values;
+    private float[][] values;
 
     public Matrix4x4(float[][] values) {
         if (values.length != 4 || values[0].length != 4) {
@@ -13,6 +13,10 @@ public class Matrix4x4 {
 
     public float[][] getValues() {
         return values;
+    }
+
+    public void setValues(float[][] m) {
+        values = m;
     }
 
     public float getValOfIndex(int colum, int row) {
@@ -66,7 +70,7 @@ public class Matrix4x4 {
         MathPart.add(values, matrix);
     }
 
-    public void add(Matrix4x4 matrix) {
+    public void add(Matrix matrix) {
         MathPart.add(values, matrix.getValues());
     }
 
@@ -74,7 +78,7 @@ public class Matrix4x4 {
         return new Matrix4x4(MathPart.getNewAdd(matrix1, matrix2));
     }
 
-    public static Matrix4x4 getNewAdd(Matrix4x4 matrix1, Matrix4x4 matrix2) {
+    public static Matrix4x4 getNewAdd(Matrix matrix1, Matrix matrix2) {
         return new Matrix4x4(MathPart.getNewAdd(matrix1.getValues(), matrix2.getValues()));
     }
 
@@ -82,7 +86,7 @@ public class Matrix4x4 {
         MathPart.sub(values, matrix);
     }
 
-    public void sub(Matrix4x4 matrix) {
+    public void sub(Matrix matrix) {
         MathPart.sub(values, matrix.getValues());
     }
 
@@ -90,7 +94,7 @@ public class Matrix4x4 {
         return new Matrix4x4(MathPart.getNewSub(matrix1, matrix2));
     }
 
-    public static Matrix4x4 getNewSub(Matrix4x4 matrix1, Matrix4x4 matrix2) {
+    public static Matrix4x4 getNewSub(Matrix matrix1, Matrix matrix2) {
         return new Matrix4x4(MathPart.getNewSub(matrix1.getValues(), matrix2.getValues()));
     }
 
@@ -98,7 +102,7 @@ public class Matrix4x4 {
         MathPart.multiply(values, matrix);
     }
 
-    public void multiply(Matrix4x4 matrix) {
+    public void multiply(Matrix matrix) {
         MathPart.multiply(values, matrix.getValues());
     }
 
@@ -106,7 +110,7 @@ public class Matrix4x4 {
         return new Matrix4x4(MathPart.getNewMultiply(matrix1, matrix2));
     }
 
-    public static Matrix4x4 getNewMul(Matrix4x4 matrix1, Matrix4x4 matrix2) {
+    public static Matrix4x4 getNewMul(Matrix matrix1, Matrix matrix2) {
         return new Matrix4x4(MathPart.getNewMultiply(matrix1.getValues(), matrix2.getValues()));
     }
 
@@ -114,11 +118,16 @@ public class Matrix4x4 {
         return new Vector4f(MathPart.getNewMultiply(matrix, vector));
     }
 
-    public static Vector4f multiplyByVector(Matrix4x4 matrix, Vector4f vector) {
+    public static Vector4f multiplyByVector(Matrix matrix, Vector vector) {
         return new Vector4f(MathPart.getNewMultiply(matrix.getValues(), vector.getValues()));
     }
 
     public void transposition() {
         MathPart.transposition(values);
     }
+
+    public Matrix4x4 clone() {
+        return new Matrix4x4(values);
+    }
+
 }

@@ -1,8 +1,8 @@
 package ru.vsu.cs.yesikov.math;
 
-public class Vector4f {
+public class Vector4f implements Vector{
 
-    private final float[] values;
+    private float[] values;
 
     public Vector4f(float[] values) {
         if (values.length != 4) {
@@ -25,6 +25,10 @@ public class Vector4f {
 
     public float[] getValues() {
         return values;
+    }
+
+    public void setValues(float[] v) {
+        values = v;
     }
 
     public float getX() {
@@ -78,7 +82,7 @@ public class Vector4f {
         MathPart.add(this.values, vector);
     }
 
-    public void add(Vector4f vector) {
+    public void add(Vector vector) {
         MathPart.add(this.values, vector.getValues());
     }
 
@@ -86,7 +90,7 @@ public class Vector4f {
         return new Vector4f(MathPart.getNewAdd(vector1, vector2));
     }
 
-    public static Vector4f getNewAdd(Vector4f vector1, Vector4f vector2) {
+    public static Vector4f getNewAdd(Vector vector1, Vector vector2) {
         return new Vector4f(MathPart.getNewAdd(vector1.getValues(), vector2.getValues()));
     }
 
@@ -94,7 +98,7 @@ public class Vector4f {
         MathPart.sub(this.values, vector);
     }
 
-    public void sub(Vector4f vector) {
+    public void sub(Vector vector) {
         MathPart.sub(this.values, vector.getValues());
     }
 
@@ -102,7 +106,7 @@ public class Vector4f {
         return new Vector4f(MathPart.getNewSub(vector1, vector2));
     }
 
-    public static Vector4f getNewSub(Vector4f vector1, Vector4f vector2) {
+    public static Vector4f getNewSub(Vector vector1, Vector vector2) {
         return new Vector4f(MathPart.getNewSub(vector1.getValues(), vector2.getValues()));
     }
 
@@ -114,7 +118,7 @@ public class Vector4f {
         MathPart.multiply(this.values, vector);
     }
 
-    public void multiply(Vector4f vector) {
+    public void multiply(Vector vector) {
         MathPart.multiply(this.values, vector.getValues());
     }
 
@@ -122,7 +126,7 @@ public class Vector4f {
         return new Vector4f(MathPart.getNewMultiply(vector1, vector2));
     }
 
-    public static Vector4f getNewMul(Vector4f vector1, Vector4f vector2) {
+    public static Vector4f getNewMul(Vector vector1, Vector vector2) {
         return new Vector4f(MathPart.getNewMultiply(vector1.getValues(), vector2.getValues()));
     }
 
@@ -130,8 +134,12 @@ public class Vector4f {
         MathPart.normalize(this.values);
     }
 
-    public static float dot(Vector4f vector1, Vector4f vector2) {
+    public static float dot(Vector vector1, Vector vector2) {
         return MathPart.dot(vector1.getValues(), vector2.getValues());
+    }
+
+    public Vector4f clone() {
+        return new Vector4f(values);
     }
 
 }

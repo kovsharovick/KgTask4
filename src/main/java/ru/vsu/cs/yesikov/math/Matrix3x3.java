@@ -1,8 +1,8 @@
 package ru.vsu.cs.yesikov.math;
 
-public class Matrix3x3 {
+public class Matrix3x3 implements Matrix{
 
-    private final float[][] values;
+    private float[][] values;
 
     public Matrix3x3(float[][] values) {
         if (values.length != 3 || values[0].length != 3) {
@@ -13,6 +13,10 @@ public class Matrix3x3 {
 
     public float[][] getValues() {
         return values;
+    }
+
+    public void setValues(float[][] m) {
+        values = m;
     }
 
     public float getValOfIndex(int colum, int row) {
@@ -64,7 +68,7 @@ public class Matrix3x3 {
         MathPart.add(values, matrix);
     }
 
-    public void add(Matrix3x3 matrix) {
+    public void add(Matrix matrix) {
         MathPart.add(values, matrix.getValues());
     }
 
@@ -72,7 +76,7 @@ public class Matrix3x3 {
         return new Matrix3x3(MathPart.getNewAdd(matrix1, matrix2));
     }
 
-    public static Matrix3x3 getNewAdd(Matrix3x3 matrix1, Matrix3x3 matrix2) {
+    public static Matrix3x3 getNewAdd(Matrix matrix1, Matrix matrix2) {
         return new Matrix3x3(MathPart.getNewAdd(matrix1.getValues(), matrix2.getValues()));
     }
 
@@ -80,7 +84,7 @@ public class Matrix3x3 {
         MathPart.sub(values, matrix);
     }
 
-    public void sub(Matrix3x3 matrix) {
+    public void sub(Matrix matrix) {
         MathPart.sub(values, matrix.getValues());
     }
 
@@ -88,7 +92,7 @@ public class Matrix3x3 {
         return new Matrix3x3(MathPart.getNewSub(matrix1, matrix2));
     }
 
-    public static Matrix3x3 getNewSub(Matrix3x3 matrix1, Matrix3x3 matrix2) {
+    public static Matrix3x3 getNewSub(Matrix matrix1, Matrix matrix2) {
         return new Matrix3x3(MathPart.getNewSub(matrix1.getValues(), matrix2.getValues()));
     }
 
@@ -96,7 +100,7 @@ public class Matrix3x3 {
         MathPart.multiply(values, matrix);
     }
 
-    public void multiply(Matrix3x3 matrix) {
+    public void multiply(Matrix matrix) {
         MathPart.multiply(values, matrix.getValues());
     }
 
@@ -104,7 +108,7 @@ public class Matrix3x3 {
         return new Matrix3x3(MathPart.getNewMultiply(matrix1, matrix2));
     }
 
-    public static Matrix3x3 getNewMul(Matrix3x3 matrix1, Matrix3x3 matrix2) {
+    public static Matrix3x3 getNewMul(Matrix matrix1, Matrix matrix2) {
         return new Matrix3x3(MathPart.getNewMultiply(matrix1.getValues(), matrix2.getValues()));
     }
 
@@ -112,12 +116,16 @@ public class Matrix3x3 {
         return new Vector3f(MathPart.getNewMultiply(matrix, vector));
     }
 
-    public static Vector3f multiplyByVector(Matrix3x3 matrix, Vector3f vector) {
+    public static Vector3f multiplyByVector(Matrix matrix, Vector vector) {
         return new Vector3f(MathPart.getNewMultiply(matrix.getValues(), vector.getValues()));
     }
 
     public void transposition() {
         MathPart.transposition(values);
+    }
+
+    public Matrix3x3 clone() {
+        return new Matrix3x3(values);
     }
 }
 
