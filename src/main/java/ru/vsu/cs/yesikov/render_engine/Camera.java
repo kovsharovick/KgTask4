@@ -47,6 +47,12 @@ public class Camera {
         this.target.add(translation);
     }
 
+    public void rotateCamera(final Matrix4x4 mR) throws Exception {
+        Vector3f vZ = Vector3f.getNewSub(target, position);
+        vZ = GraphicConveyor.multiplyMatrix4ByVector3(mR, vZ);
+        target = Vector3f.getNewAdd(position, vZ);
+    }
+
     public Matrix4x4 getViewMatrix() {
         return GraphicConveyor.lookAt(position, target);
     }

@@ -7,4 +7,6 @@ module ru.vsu.cs.yesikov {
 
     opens ru.vsu.cs.yesikov to javafx.fxml;
     exports ru.vsu.cs.yesikov;
+    exports ru.vsu.cs.yesikov.render_engine;
+    opens ru.vsu.cs.yesikov.render_engine to javafx.fxml;
 }

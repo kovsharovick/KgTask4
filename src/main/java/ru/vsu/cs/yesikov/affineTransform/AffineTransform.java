@@ -19,8 +19,8 @@ public class AffineTransform {
         return T;
     }
 
-    public static Matrix4x4 getRotateMatrix(float rX, float rY) {
-        return rotate(rX, rY, 0, "xyz");
+    public static Matrix4x4 getRotateMatrix(Vector3f angle) {
+        return rotate(angle.getX(), angle.getY(), angle.getZ(), "xyz");
     }
 
 
