@@ -12,6 +12,25 @@ public class Model {
     public ArrayList<Vector3f> normals = new ArrayList<Vector3f>();
     public ArrayList<Polygon> polygons = new ArrayList<Polygon>();
 
+    public ArrayList<Vector3f> getVertices() {return vertices;}
+    public ArrayList<Polygon> getPolygons() {return polygons;}
+
+    public ArrayList<Vector3f> getNormals() {return normals;}
+    public ArrayList<Vector2f> getTextureVertices() {return textureVertices;}
+
+
+    public void setNormals(ArrayList<Vector3f> normals) {
+        this.normals = normals;
+    }
+
+    public void setPolygons(ArrayList<Polygon> polygons) {
+        this.polygons = polygons;
+    }
+
+    public void setTextureVertices(ArrayList<Vector2f> textureVertices) {
+        this.textureVertices = textureVertices;
+    }
+
     public void recalculateNormals(Model model) {
         normals.clear();
         Map<Integer, Vector3f> vertexNormals = new HashMap<>();
@@ -26,11 +45,11 @@ public class Model {
             Vector3f v1 = vertices.get(vertexIndices.get(1));
             Vector3f v2 = vertices.get(vertexIndices.get(2));
 
-            Vector3f edge1 = Vector3f.getNewSub(v1,v0);
-            Vector3f edge2 =Vector3f.getNewSub(v2,v1);
+            Vector3f edge1 = Vector3f.getNewSub(v1, v0);
+            Vector3f edge2 = Vector3f.getNewSub(v2, v1);
 
-                    Vector3f normal = Vector3f.getNewMul(edge1,edge2);
-                    normal.normalize();
+            Vector3f normal = Vector3f.getNewMul(edge1, edge2);
+            normal.normalize();
 
 
             if (shouldInvertNormal(normal, vertexIndices)) {
@@ -38,7 +57,7 @@ public class Model {
             }
 
             for (int vertexIndex : vertexIndices) {
-                vertexNormals.put(vertexIndex, vertexNormals.getOrDefault(vertexIndex,  Vector3f.getNewAdd(new Vector3f(0,0,0),normal)));
+                vertexNormals.put(vertexIndex, vertexNormals.getOrDefault(vertexIndex, Vector3f.getNewAdd(new Vector3f(0, 0, 0), normal)));
             }
         }
 
@@ -53,7 +72,8 @@ public class Model {
         // Логика для проверки необходимости инвертирования нормали
         return false;  // По умолчанию - не инвертировать
     }
-    public static void triangulate (Model model){
+
+    public static void triangulate(Model model) {
         ArrayList<Polygon> triangulatedPolygons = new ArrayList<>();
 
         for (Polygon polygon : model.polygons) {

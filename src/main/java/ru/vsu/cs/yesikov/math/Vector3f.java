@@ -21,6 +21,7 @@ public class Vector3f {
         this.values[2] = z;
     }
 
+
     public float[] getValues() {
         return values;
     }
@@ -117,6 +118,9 @@ public class Vector3f {
 
     public void normalize() {
         MathPart.normalize(this.values);
+    }
+    public static Vector3f getNewNormalize(Vector3f vector1){
+        return new Vector3f(MathPart.getNewNormalize(vector1.getValues()));
     }
 
     public static float dot(Vector3f vector1, Vector3f vector2) {

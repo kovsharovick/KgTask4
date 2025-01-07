@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="getNew">
+    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="first step">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/BarycentricCoordinates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Coloring.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Shadow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_01_2025_2_45__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_01_2025_2_45__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/MathPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/MathPart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReaderException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReaderException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,10 +30,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="thirdperson" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -42,36 +47,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Simple3DViewer.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;3__1part&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vova/Downloads/kg3/KgTask3_8-main&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;D:/Java, C++, Python/Java/KgTask4/src/main/java/ru/vsu/cs/yesikov/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.Simple3DViewer.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "3__1part",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/PC/IdeaProjects/3DViewer_task_4-master",
+    "onboarding.tips.debug.path": "D:/Java, C++, Python/Java/KgTask4/src/main/java/ru/vsu/cs/yesikov/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\java\ru\vsu\cs\yesikov\math" />
-      <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\java\ru\vsu\cs\yesikov" />
       <recent name="D:\Java, C++, Python\Java\KgTask4\src" />
       <recent name="D:\Java, C++, Python\Java\KgTask4" />
       <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\resources" />
+      <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\java" />
+      <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\java\ru\vsu\cs\yesikov" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Java, C++, Python\Java\KgTask4" />
       <recent name="D:\Java, C++, Python\Java\KgTask4\src" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ru.vsu.cs.yesikov.math" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -117,30 +120,47 @@
       <option name="presentableId" value="Default" />
       <updated>1735929486935</updated>
     </task>
-    <task id="LOCAL-00001" summary="Init">
+    <task id="LOCAL-00001" summary="first step">
       <option name="closed" value="true" />
-      <created>1736022062295</created>
+      <created>1736096642347</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1736022062295</updated>
+      <updated>1736096642347</updated>
     </task>
-    <task id="LOCAL-00002" summary="getNew">
+    <task id="LOCAL-00002" summary="first step">
       <option name="closed" value="true" />
-      <created>1736200501133</created>
+      <created>1736197302031</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1736200501133</updated>
+      <updated>1736197302031</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="first step">
+      <option name="closed" value="true" />
+      <created>1736205132947</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1736205132947</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Init" />
-    <MESSAGE value="mathModule" />
-    <MESSAGE value="getNew" />
-    <option name="LAST_COMMIT_MESSAGE" value="getNew" />
+    <MESSAGE value="first step" />
+    <option name="LAST_COMMIT_MESSAGE" value="first step" />
   </component>
 </project>
