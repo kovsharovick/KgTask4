@@ -15,7 +15,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.io.IOException;
 import java.io.File;
-//import javax.vecmath.Vector3f;
 
 import ru.vsu.cs.yesikov.math.*;
 import ru.vsu.cs.yesikov.model.Model;
