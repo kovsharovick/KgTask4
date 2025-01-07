@@ -84,6 +84,10 @@ public class Vector3f implements Vector{
         return MathPart.lengthOfVector(this.values);
     }
 
+    public static Vector3f getNewVecMul(Vector3f vector1, Vector3f vector2) {
+        return new Vector3f(MathPart.getVecMul(vector1.getValues(), vector2.getValues()));
+    }
+
     public void add(float[] vector) {
         MathPart.add(this.values, vector);
     }

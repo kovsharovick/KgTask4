@@ -1,113 +1,119 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package ru.vsu.cs.yesikov;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import ru.vsu.cs.yesikov.render_engine.RenderEngine;
+import javafx.fxml.FXML;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.io.IOException;
+import java.io.File;
 //import javax.vecmath.Vector3f;
+
 import ru.vsu.cs.yesikov.model.Model;
 import ru.vsu.cs.yesikov.objreader.ObjReader;
 import ru.vsu.cs.yesikov.render_engine.Camera;
-import ru.vsu.cs.yesikov.render_engine.RenderEngine;
 import ru.vsu.cs.yesikov.math.*;
 
 public class GuiController {
-    private final float TRANSLATION = 0.5F;
+
+    final private float TRANSLATION = 0.5F;
+
     @FXML
     AnchorPane anchorPane;
+
     @FXML
     private Canvas canvas;
-    private Model mesh = null;
-    private Camera camera = new Camera(new Vector3f(0.0F, 0.0F, 100.0F), new Vector3f(0.0F, 0.0F, 0.0F), 1.0F, 1.0F, 0.01F, 100.0F);
-    private Timeline timeline;
 
-    public GuiController() {
-    }
+    private Model mesh = null;
+
+    private Camera camera = new Camera(
+            new Vector3f(0, 100, 100),
+            new Vector3f(0, 0, 0),
+            1.0F, 1, 1, 1000);
+
+    private Timeline timeline;
 
     @FXML
     private void initialize() {
-        this.anchorPane.prefWidthProperty().addListener((ov, oldValue, newValue) -> {
-            this.canvas.setWidth(newValue.doubleValue());
-        });
-        this.anchorPane.prefHeightProperty().addListener((ov, oldValue, newValue) -> {
-            this.canvas.setHeight(newValue.doubleValue());
-        });
-        this.timeline = new Timeline();
-        this.timeline.setCycleCount(-1);
-        KeyFrame frame = new KeyFrame(Duration.millis(15.0), (event) -> {
-            double width = this.canvas.getWidth();
-            double height = this.canvas.getHeight();
-            this.canvas.getGraphicsContext2D().clearRect(0.0, 0.0, width, height);
-            this.camera.setAspectRatio((float)(width / height));
-            if (this.mesh != null) {
-                RenderEngine.render(this.canvas.getGraphicsContext2D(), this.camera, this.mesh, (int)width, (int)height);
-            }
+        anchorPane.prefWidthProperty().addListener((ov, oldValue, newValue) -> canvas.setWidth(newValue.doubleValue()));
+        anchorPane.prefHeightProperty().addListener((ov, oldValue, newValue) -> canvas.setHeight(newValue.doubleValue()));
 
-        }, new KeyValue[0]);
-        this.timeline.getKeyFrames().add(frame);
-        this.timeline.play();
+        timeline = new Timeline();
+        timeline.setCycleCount(Animation.INDEFINITE);
+
+        KeyFrame frame = new KeyFrame(Duration.millis(15), event -> {
+            double width = canvas.getWidth();
+            double height = canvas.getHeight();
+
+            canvas.getGraphicsContext2D().clearRect(0, 0, width, height);
+            camera.setAspectRatio((float) (width / height));
+
+            if (mesh != null) {
+                RenderEngine.render(canvas.getGraphicsContext2D(), camera, mesh, (int) width, (int) height);
+            }
+        });
+
+        timeline.getKeyFrames().add(frame);
+        timeline.play();
     }
 
     @FXML
     private void onOpenModelMenuItemClick() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Model (*.obj)", new String[]{"*.obj"}));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Model (*.obj)", "*.obj"));
         fileChooser.setTitle("Load Model");
-        File file = fileChooser.showOpenDialog((Stage)this.canvas.getScene().getWindow());
-        if (file != null) {
-            Path fileName = Path.of(file.getAbsolutePath());
 
-            try {
-                String fileContent = Files.readString(fileName);
-                this.mesh = ObjReader.read(fileContent);
-            } catch (IOException var5) {
-            }
+        File file = fileChooser.showOpenDialog((Stage) canvas.getScene().getWindow());
+        if (file == null) {
+            return;
+        }
+
+        Path fileName = Path.of(file.getAbsolutePath());
+
+        try {
+            String fileContent = Files.readString(fileName);
+            mesh = ObjReader.read(fileContent);
+            // todo: обработка ошибок
+        } catch (IOException exception) {
 
         }
     }
 
     @FXML
     public void handleCameraForward(ActionEvent actionEvent) {
-        this.camera.movePosition(new Vector3f(0.0F, 0.0F, -0.5F));
+        camera.movePosition(new Vector3f(0, 0, -TRANSLATION));
     }
 
     @FXML
     public void handleCameraBackward(ActionEvent actionEvent) {
-        this.camera.movePosition(new Vector3f(0.0F, 0.0F, 0.5F));
+        camera.movePosition(new Vector3f(0, 0, TRANSLATION));
     }
 
     @FXML
     public void handleCameraLeft(ActionEvent actionEvent) {
-        this.camera.movePosition(new Vector3f(0.5F, 0.0F, 0.0F));
+        camera.movePosition(new Vector3f(TRANSLATION, 0, 0));
     }
 
     @FXML
     public void handleCameraRight(ActionEvent actionEvent) {
-        this.camera.movePosition(new Vector3f(-0.5F, 0.0F, 0.0F));
+        camera.movePosition(new Vector3f(-TRANSLATION, 0, 0));
     }
 
     @FXML
     public void handleCameraUp(ActionEvent actionEvent) {
-        this.camera.movePosition(new Vector3f(0.0F, 0.5F, 0.0F));
+        camera.movePosition(new Vector3f(0, TRANSLATION, 0));
     }
 
     @FXML
     public void handleCameraDown(ActionEvent actionEvent) {
-        this.camera.movePosition(new Vector3f(0.0F, -0.5F, 0.0F));
+        camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
     }
 }

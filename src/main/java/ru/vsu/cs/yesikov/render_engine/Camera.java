@@ -47,17 +47,14 @@ public class Camera {
         this.target.add(translation);
     }
 
-    Matrix4x4 getViewMatrix() {
+    public Matrix4x4 getViewMatrix() {
         return GraphicConveyor.lookAt(position, target);
     }
 
-    Matrix4x4 getProjectionMatrix() {
+    public Matrix4x4 getProjectionMatrix() {
         return GraphicConveyor.perspective(fov, aspectRatio, nearPlane, farPlane);
     }
 
-    public Camera copy() {
-        return new Camera(position.clone(), target.clone(), fov, aspectRatio, nearPlane, farPlane);
-    }
     private Vector3f position;
     private Vector3f target;
     private float fov;

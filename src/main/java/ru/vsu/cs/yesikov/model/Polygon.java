@@ -1,38 +1,18 @@
 package ru.vsu.cs.yesikov.model;
 
-import ru.vsu.cs.yesikov.exceptions.IndicesException;
-
 import java.util.ArrayList;
 
 public class Polygon {
-
 
     private ArrayList<Integer> vertexIndices;
     private ArrayList<Integer> textureVertexIndices;
     private ArrayList<Integer> normalIndices;
 
-    public Polygon(final ArrayList<Integer> vertexIndices, final ArrayList<Integer> textureVertexIndices, final ArrayList<Integer> normalIndices) {
-        this.vertexIndices = vertexIndices;
-        this.textureVertexIndices = textureVertexIndices;
-        this.normalIndices = normalIndices;
-    }
 
     public Polygon() {
         vertexIndices = new ArrayList<Integer>();
         textureVertexIndices = new ArrayList<Integer>();
         normalIndices = new ArrayList<Integer>();
-    }
-
-    @Override
-    public Polygon clone() {
-        Polygon clonedPolygon = new Polygon();
-
-        // Глубокое копирование списков
-        clonedPolygon.vertexIndices = new ArrayList<>(this.vertexIndices);
-        clonedPolygon.textureVertexIndices = new ArrayList<>(this.textureVertexIndices);
-        clonedPolygon.normalIndices = new ArrayList<>(this.normalIndices);
-
-        return clonedPolygon;
     }
 
     public void setVertexIndices(ArrayList<Integer> vertexIndices) {
@@ -61,5 +41,4 @@ public class Polygon {
     public ArrayList<Integer> getNormalIndices() {
         return normalIndices;
     }
-
 }

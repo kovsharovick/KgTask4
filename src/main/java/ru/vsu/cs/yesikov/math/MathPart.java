@@ -160,10 +160,20 @@ public class MathPart {
         return res;
     }
 
+    public static float[] getVecMul(float[] vector1, float[] vector2) {
+        return new float[] {
+                vector1[1] * vector2[2] - vector1[2] * vector2[1],
+                -1 * (vector1[0] * vector2[2] - vector1[2] * vector2[0]),
+                vector1[0] * vector2[1] - vector1[1] * vector2[0]};
+    }
+
     //normalize
 
     public static void normalize(float[] vector) {
         float length = lengthOfVector(vector);
+        if (length == 0) {
+            return;
+        }
         for (int i = 0; i < vector.length; i++) {
             vector[i] /= length;
         }
