@@ -21,6 +21,9 @@ public class Vector3f implements Vector{
         this.values[2] = z;
     }
 
+    public Vector4f toVector4f(float w) {
+        return new Vector4f(values[0], values[1], values[2], w);
+    }
 
     public float[] getValues() {
         return values;
@@ -59,13 +62,13 @@ public class Vector3f implements Vector{
         this.values[2] = z;
     }
 
-    public void vector3fto4f(Vector4f v) {
+    public void change4fto3f(Vector4f v) {
         values[0] = v.getValues()[0];
         values[1] = v.getValues()[1];
         values[2] = v.getValues()[2];
     }
 
-    public void vector3fto4f(float[] v) {
+    public void change4fto3f(float[] v) {
         values[0] = v[0];
         values[1] = v[1];
         values[2] = v[2];
@@ -144,6 +147,7 @@ public class Vector3f implements Vector{
     public void normalize() {
         MathPart.normalize(this.values);
     }
+
     public static Vector3f getNewNormalize(Vector3f vector1){
         return new Vector3f(MathPart.getNewNormalize(vector1.getValues()));
     }

@@ -1,7 +1,5 @@
 package ru.vsu.cs.yesikov.math;
 
-import ru.vsu.cs.yesikov.math.*;
-
 public interface Matrix {
 
     public void add(float[][] matrix);

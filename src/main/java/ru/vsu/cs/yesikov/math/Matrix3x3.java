@@ -127,5 +127,6 @@ public class Matrix3x3 implements Matrix{
     public Matrix3x3 clone() {
         return new Matrix3x3(values);
     }
+
 }
 

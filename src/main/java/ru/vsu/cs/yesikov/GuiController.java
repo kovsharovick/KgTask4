@@ -1,7 +1,5 @@
 package ru.vsu.cs.yesikov;
 
-//import javafx.scene.Scene;
-
 import ru.vsu.cs.yesikov.affineTransform.AffineTransform;
 import ru.vsu.cs.yesikov.render_engine.RenderEngine;
 import javafx.fxml.FXML;
@@ -121,18 +119,6 @@ public class GuiController {
     @FXML
     public void handleCameraLeft(ActionEvent actionEvent) {
         if (!focusOnTarget) {
-            camera.movePosition(new Vector3f(TRANSLATION, 0, 0));
-            camera.moveTarget(new Vector3f(TRANSLATION, 0, 0));
-        } else {
-            Vector4f v4 = Matrix4x4.multiplyByVector(AffineTransform.getRotateMatrix(new Vector3f(0, TRANSLATION, 0)),
-                    new Vector4f(camera.getPosition().getX(), camera.getPosition().getY(), camera.getPosition().getZ(), 1));
-            camera.setPosition(new Vector3f(v4.getX(), v4.getY(), v4.getZ()));
-        }
-    }
-
-    @FXML
-    public void handleCameraRight(ActionEvent actionEvent) {
-        if (!focusOnTarget) {
             camera.movePosition(new Vector3f(-TRANSLATION, 0, 0));
             camera.moveTarget(new Vector3f(-TRANSLATION, 0, 0));
         } else {
@@ -143,12 +129,24 @@ public class GuiController {
     }
 
     @FXML
+    public void handleCameraRight(ActionEvent actionEvent) {
+        if (!focusOnTarget) {
+            camera.movePosition(new Vector3f(TRANSLATION, 0, 0));
+            camera.moveTarget(new Vector3f(TRANSLATION, 0, 0));
+        } else {
+            Vector4f v4 = Matrix4x4.multiplyByVector(AffineTransform.getRotateMatrix(new Vector3f(0, TRANSLATION, 0)),
+                    new Vector4f(camera.getPosition().getX(), camera.getPosition().getY(), camera.getPosition().getZ(), 1));
+            camera.setPosition(new Vector3f(v4.getX(), v4.getY(), v4.getZ()));
+        }
+    }
+
+    @FXML
     public void handleCameraUp(ActionEvent actionEvent) {
         if (!focusOnTarget) {
-            camera.movePosition(new Vector3f(0, TRANSLATION, 0));
-            camera.moveTarget(new Vector3f(0, TRANSLATION, 0));
+            camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
+            camera.moveTarget(new Vector3f(0, -TRANSLATION, 0));
         } else {
-            Vector4f v4 = Matrix4x4.multiplyByVector(AffineTransform.getRotateMatrix(new Vector3f(-TRANSLATION, 0, 0)),
+            Vector4f v4 = Matrix4x4.multiplyByVector(AffineTransform.getRotateMatrix(new Vector3f(TRANSLATION, 0, 0)),
                     new Vector4f(camera.getPosition().getX(), camera.getPosition().getY(), camera.getPosition().getZ(), 1));
             camera.setPosition(new Vector3f(v4.getX(), v4.getY(), v4.getZ()));
         }
@@ -157,10 +155,10 @@ public class GuiController {
     @FXML
     public void handleCameraDown(ActionEvent actionEvent) {
         if (!focusOnTarget) {
-            camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
-            camera.moveTarget(new Vector3f(0, -TRANSLATION, 0));
+            camera.movePosition(new Vector3f(0, TRANSLATION, 0));
+            camera.moveTarget(new Vector3f(0, TRANSLATION, 0));
         } else {
-            Vector4f v4 = Matrix4x4.multiplyByVector(AffineTransform.getRotateMatrix(new Vector3f(TRANSLATION, 0, 0)),
+            Vector4f v4 = Matrix4x4.multiplyByVector(AffineTransform.getRotateMatrix(new Vector3f(-TRANSLATION, 0, 0)),
                     new Vector4f(camera.getPosition().getX(), camera.getPosition().getY(), camera.getPosition().getZ(), 1));
             camera.setPosition(new Vector3f(v4.getX(), v4.getY(), v4.getZ()));
         }

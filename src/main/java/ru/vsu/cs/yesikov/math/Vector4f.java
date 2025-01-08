@@ -23,6 +23,10 @@ public class Vector4f implements Vector{
         this.values[3] = w;
     }
 
+    public Vector3f toVector3f() {
+        return new Vector3f(values[0], values[1], values[2]);
+    }
+
     public float[] getValues() {
         return values;
     }

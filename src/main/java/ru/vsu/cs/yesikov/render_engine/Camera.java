@@ -1,8 +1,16 @@
 package ru.vsu.cs.yesikov.render_engine;
 
-import ru.vsu.cs.yesikov.math.*;
+import ru.vsu.cs.yesikov.math.Vector3f;
+import ru.vsu.cs.yesikov.math.Matrix4x4;
 
 public class Camera {
+
+    private Vector3f position;
+    private Vector3f target;
+    private float fov;
+    private float aspectRatio;
+    private float nearPlane;
+    private float farPlane;
 
     public Camera(
             final Vector3f position,
@@ -61,10 +69,4 @@ public class Camera {
         return GraphicConveyor.perspective(fov, aspectRatio, nearPlane, farPlane);
     }
 
-    private Vector3f position;
-    private Vector3f target;
-    private float fov;
-    private float aspectRatio;
-    private float nearPlane;
-    private float farPlane;
 }

@@ -1,6 +1,8 @@
 package ru.vsu.cs.yesikov.render_engine;
 
-import ru.vsu.cs.yesikov.math.*;
+import ru.vsu.cs.yesikov.math.Matrix4x4;
+import ru.vsu.cs.yesikov.math.Vector3f;
+import ru.vsu.cs.yesikov.math.Point2f;
 import static ru.vsu.cs.yesikov.math.Vector3f.*;
 
 public class GraphicConveyor {

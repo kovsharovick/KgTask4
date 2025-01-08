@@ -2,8 +2,8 @@ package ru.vsu.cs.yesikov.math;
 
 public class Point2f {
 
-    private float x;
-    private float y;
+    private final float x;
+    private final float y;
 
     public Point2f(float x, float y) {
         this.x = x;

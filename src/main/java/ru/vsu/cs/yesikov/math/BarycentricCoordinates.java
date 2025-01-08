@@ -2,6 +2,7 @@ package ru.vsu.cs.yesikov.math;
 
 
 public class BarycentricCoordinates {
+
     float u;
     float v;
     float w;
@@ -21,8 +22,8 @@ public class BarycentricCoordinates {
         return v;
     }
 
-
     public float getW() {
         return w;
     }
+
 }
