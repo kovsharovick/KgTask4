@@ -54,12 +54,6 @@ public class GuiController {
     @FXML
     public ColorPicker modelColor;
     @FXML
-    public RadioButton radioButtonMesh;
-    @FXML
-    public RadioButton radioButtonTexture;
-    @FXML
-    public RadioButton radioButtonShades;
-    @FXML
     private boolean isRotationActive;
     private final Vector2f currentMouseCoordinates = new Vector2f(0, 0);
     private final Vector2f centerCoordinates = new Vector2f(0, 0);
@@ -114,9 +108,6 @@ public class GuiController {
 
         timeline.getKeyFrames().add(frame);
         timeline.play();
-
-        canvas.getOnMouseMoved();
-        canvas.requestFocus();
     }
 
     public void rotateCamera() {
@@ -136,8 +127,8 @@ public class GuiController {
         }
     }
     public boolean[] getRenderWayData() {
-        return new boolean[] {radioButtonMesh.isSelected(), radioButtonShades.isSelected(),
-                radioButtonTexture.isSelected()};
+        return new boolean[] {turnOnGrid.isSelected(), turnOnLight.isSelected(),
+                turnOnTexture.isSelected()};
     }
 
 
