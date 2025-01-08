@@ -97,6 +97,8 @@ public class GuiController {
             // todo: обработка ошибок
         } catch (IOException exception) {
 
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 

@@ -3,7 +3,9 @@ package ru.vsu.cs.yesikov.render_engine;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
 import javafx.scene.canvas.GraphicsContext;
 import ru.vsu.cs.yesikov.math.*;
 import ru.vsu.cs.yesikov.model.Model;
@@ -18,7 +20,10 @@ public class RenderEngine {
             final Camera camera,
             final Model mesh,
             final int width,
-            final int height) {
+            final int height/*,
+            final javafx.scene.paint.Color modelColor,
+            BufferedImage texture,
+            final boolean[] renderingStatements*/) {
         Matrix4x4 modelMatrix = rotateScaleTranslate();
         Matrix4x4 viewMatrix = camera.getViewMatrix();
         Matrix4x4 projectionMatrix = camera.getProjectionMatrix();
@@ -27,6 +32,11 @@ public class RenderEngine {
         modelViewProjectionMatrix.multiply(viewMatrix);
         modelViewProjectionMatrix.multiply(modelMatrix);
 
+        javafx.scene.paint.Color meshColor = javafx.scene.paint.Color.WHITE;
+
+        float[] zBuffer = new float[width * height];
+
+        Arrays.fill(zBuffer, Float.NEGATIVE_INFINITY);
         final int nPolygons = mesh.polygons.size();
         for (int polygonInd = 0; polygonInd < nPolygons; ++polygonInd) {
             final int nVerticesInPolygon = mesh.polygons.get(polygonInd).getVertexIndices().size();
@@ -55,6 +65,80 @@ public class RenderEngine {
                         resultPoints.get(nVerticesInPolygon - 1).getY(),
                         resultPoints.get(0).getX(),
                         resultPoints.get(0).getY());
+
+            /*startRender(renderingStatements[0],
+                    renderingStatements[1],
+                    renderingStatements[2],
+                    renderingStatements[3],
+                    Coloring.convertColorToAWT(modelColor),
+                    meshColor,
+                    graphicsContext,
+                    texture,
+                    width,
+                    height,
+                    mesh,
+                    camera,
+                    polygonInd,
+                    nVerticesInPolygon,
+                    resultPoints,
+                    zBuffer);*/
+        }
+    }
+
+    private static void startRender(
+            boolean haveMesh,
+            boolean haveShade,
+            boolean haveTexture,
+            boolean haveSolidColor,
+            Color modelColor,
+            javafx.scene.paint.Color meshColor,
+            GraphicsContext graphicsContext,
+            BufferedImage texture,
+            int width,
+            int height,
+            Model mesh,
+            Camera camera,
+            int polygonInd,
+            int nVerticesInPolygon,
+            ArrayList<Point2f> points,
+            float[] zBuffer) {
+
+        if (haveTexture && texture != null) {
+            rasterizePolygon(
+                    false,
+                    true,
+                    haveShade,
+                    modelColor,
+                    graphicsContext,
+                    texture,
+                    width,
+                    height,
+                    mesh,
+                    camera.getTarget(),
+                    camera.getPosition(),
+                    polygonInd,
+                    points,
+                    zBuffer);
+        }
+        if (haveSolidColor) {
+            rasterizePolygon(
+                    true,
+                    false,
+                    haveShade,
+                    modelColor,
+                    graphicsContext,
+                    null,
+                    width,
+                    height,
+                    mesh,
+                    camera.getTarget(),
+                    camera.getPosition(),
+                    polygonInd,
+                    points,
+                    zBuffer);
+        }
+        if (haveMesh) {
+            drawMesh(graphicsContext, meshColor, nVerticesInPolygon, points);
         }
     }
 
@@ -72,8 +156,8 @@ public class RenderEngine {
             Vector3f target,
             Vector3f position,
             int polygonInd,
-            ArrayList<Vector2f> points,
-            double[] zBuffer) {
+            ArrayList<Point2f> points,
+            float[] zBuffer) {
 
         List<Integer> vertexIndices = mesh.getPolygons().get(polygonInd).getVertexIndices();
         Vector3f[] v = new Vector3f[]{mesh.getVertices().get(vertexIndices.get(0)), mesh.getVertices().get(vertexIndices.get(1)), mesh.getVertices().get(vertexIndices.get(2))};
@@ -151,12 +235,11 @@ public class RenderEngine {
         graphicsContext.getPixelWriter().setArgb(x, y, color);
     }
 
-    // Полигональная сетка
     private static void drawMesh(
             GraphicsContext graphicsContext,
             javafx.scene.paint.Color meshColor,
             int nVerticesInPolygon,
-            ArrayList<Vector2f> resultPoints) {
+            ArrayList<Point2f> resultPoints) {
         graphicsContext.setStroke(meshColor);
         for (int vertexInPolygonInd = 1; vertexInPolygonInd < nVerticesInPolygon; ++vertexInPolygonInd) {
             graphicsContext.strokeLine(

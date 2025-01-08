@@ -1,0 +1,280 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"92beaa7b-bd3b-4c10-b82b-d7d23c22cf41\" name=\"Changes\" comment=\"first step\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/affineTransform/AffineTransform.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/affineTransform/AffineTransform.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objwriter/ObjWriter.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objwriter/ObjWriter.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"RESET_MODE\" value=\"MIXED\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2r88kignTN6S22AKM5rl0T2kGfe\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Simple3DViewer.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;thirdperson&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/IdeaProjects/KgTask2_8-Rasterization&quot;,\r\n    &quot;onboarding.tips.debug.path&quot;: &quot;D:/Java, C++, Python/Java/KgTask4/src/main/java/ru/vsu/cs/yesikov/Main.java&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\\src\" />\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\" />\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\\src\\main\\resources\" />\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\\src\\main\\java\" />\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\\src\\main\\java\\ru\\vsu\\cs\\yesikov\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\" />\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"ru.vsu.cs.yesikov.Main\" />\r\n      <module name=\"cgvsu\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"ru.vsu.cs.yesikov.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Simple3DViewer\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"ru.vsu.cs.yesikov.Simple3DViewer\" />\r\n      <module name=\"KgTask4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"ru.vsu.cs.yesikov.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Simple3DViewer\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"92beaa7b-bd3b-4c10-b82b-d7d23c22cf41\" name=\"Changes\" comment=\"\" />\r\n      <created>1735929486935</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1735929486935</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"first step\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736096642347</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736096642347</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"first step\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736197302031</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736197302031</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"first step\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1736205132947</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1736205132947</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"first step\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"first step\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 88fd883b9175f4a5936ed46cc6beddf3e94f396e)
++++ b/.idea/workspace.xml	(date 1736278716472)
+@@ -4,26 +4,43 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="first step">
++    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="init">
++      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/BarycentricCoordinates.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Coloring.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Shadow.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/affineTransform/AffineTransform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/affineTransform/AffineTransform.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Matrix3x3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Matrix3x3.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Matrix4x4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Matrix4x4.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector2f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector2f.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector4f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector4f.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objwriter/ObjWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objwriter/ObjWriter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Polygon.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Camera.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/GraphicConveyor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/GraphicConveyor.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="master" />
++        <entry key="$PROJECT_DIR$" value="MathPart" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-    <option name="RESET_MODE" value="MIXED" />
+   </component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 0
+@@ -41,12 +58,43 @@
+     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+     &quot;Application.Simple3DViewer.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;JUnit.MathTest.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testAddMatrix3x3.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testAddMatrix4x4.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testAddVector4f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testDivByScalarVector2f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testDivByScalarVector3f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testDivByScalarVector4f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testDotVector2f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testDotVector3f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testDotVector4f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testGetLengthVector2f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testGetLengthVector3f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testGetLengthVector4f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testGetNewAddMatrix3x3.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testGetNewAddMatrix4x4.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testGetNewMulMatrix3x3.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testGetNewMulMatrix4x4.executor&quot;: &quot;Debug&quot;,
++    &quot;JUnit.MathTest.testGetNewMulMatrix4x4OnVector4f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testGetNewSubMatrix3x3.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testGetNewSubMatrix4x4.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testMulMatrix3x3.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testMulMatrix3x3OnVector3f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testMulMatrix4x4.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testMulMatrix4x4OnVector4f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testNormalizeVector2f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testNormalizeVector3f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testNormalizeVector4f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testSubMatrix3x3.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testSubMatrix4x4.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testSubVector3f.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testTranspositionMatrix3x3.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.MathTest.testTranspositionMatrix4x4.executor&quot;: &quot;Run&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;thirdperson&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;mathpart&quot;,
+     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/IdeaProjects/KgTask2_8-Rasterization&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vova/Downloads/KgTask4-master&quot;,
+     &quot;onboarding.tips.debug.path&quot;: &quot;D:/Java, C++, Python/Java/KgTask4/src/main/java/ru/vsu/cs/yesikov/Main.java&quot;,
+     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+@@ -55,16 +103,23 @@
+ }</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
++      <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\java\ru\vsu\cs\yesikov\math" />
++      <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\java\ru\vsu\cs\yesikov" />
+       <recent name="D:\Java, C++, Python\Java\KgTask4\src" />
+       <recent name="D:\Java, C++, Python\Java\KgTask4" />
+       <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\resources" />
+-      <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\java" />
+-      <recent name="D:\Java, C++, Python\Java\KgTask4\src\main\java\ru\vsu\cs\yesikov" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="D:\Java, C++, Python\Java\KgTask4" />
+       <recent name="D:\Java, C++, Python\Java\KgTask4\src" />
+     </key>
++    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
++      <recent name="ru.vsu.cs" />
++    </key>
++    <key name="CopyClassDialog.RECENTS_KEY">
++      <recent name="ru.vsu.cs.yesikov.render_engine" />
++      <recent name="ru.vsu.cs.yesikov.math" />
++    </key>
+   </component>
+   <component name="RunManager">
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+@@ -93,10 +148,60 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <configuration name="MathTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="KgTask4" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="ru.vsu.cs.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <option name="PACKAGE_NAME" value="ru.vsu.cs" />
++      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.MathTest" />
++      <option name="TEST_OBJECT" value="class" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="MathTest.testTranspositionMatrix3x3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="KgTask4" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="ru.vsu.cs.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <option name="PACKAGE_NAME" value="ru.vsu.cs" />
++      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.MathTest" />
++      <option name="METHOD_NAME" value="testTranspositionMatrix3x3" />
++      <option name="TEST_OBJECT" value="method" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="MathTest.testTranspositionMatrix4x4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="KgTask4" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="ru.vsu.cs.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <option name="PACKAGE_NAME" value="ru.vsu.cs" />
++      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.MathTest" />
++      <option name="METHOD_NAME" value="testTranspositionMatrix4x4" />
++      <option name="TEST_OBJECT" value="method" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.Simple3DViewer" />
+         <item itemvalue="Application.Main" />
+-        <item itemvalue="Application.Simple3DViewer" />
++        <item itemvalue="Application.Main" />
++        <item itemvalue="JUnit.MathTest" />
++        <item itemvalue="JUnit.MathTest.testTranspositionMatrix3x3" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -109,47 +214,62 @@
+       <option name="presentableId" value="Default" />
+       <updated>1735929486935</updated>
+     </task>
+-    <task id="LOCAL-00001" summary="first step">
++    <task id="LOCAL-00001" summary="Init">
+       <option name="closed" value="true" />
+-      <created>1736096642347</created>
++      <created>1736022062295</created>
+       <option name="number" value="00001" />
+       <option name="presentableId" value="LOCAL-00001" />
+       <option name="project" value="LOCAL" />
+-      <updated>1736096642347</updated>
++      <updated>1736022062295</updated>
+     </task>
+-    <task id="LOCAL-00002" summary="first step">
++    <task id="LOCAL-00002" summary="getNew">
+       <option name="closed" value="true" />
+-      <created>1736197302031</created>
++      <created>1736200501133</created>
+       <option name="number" value="00002" />
+       <option name="presentableId" value="LOCAL-00002" />
+       <option name="project" value="LOCAL" />
+-      <updated>1736197302031</updated>
++      <updated>1736200501133</updated>
+     </task>
+-    <task id="LOCAL-00003" summary="first step">
++    <task id="LOCAL-00003" summary="Init">
+       <option name="closed" value="true" />
+-      <created>1736205132947</created>
++      <created>1736204842865</created>
+       <option name="number" value="00003" />
+       <option name="presentableId" value="LOCAL-00003" />
+       <option name="project" value="LOCAL" />
+-      <updated>1736205132947</updated>
++      <updated>1736204842865</updated>
++    </task>
++    <task id="LOCAL-00004" summary="correctMathModule">
++      <option name="closed" value="true" />
++      <created>1736251586042</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1736251586042</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <option name="localTasksCounter" value="5" />
+     <servers />
+-  </component>
+-  <component name="Vcs.Log.Tabs.Properties">
+-    <option name="TAB_STATES">
+-      <map>
+-        <entry key="MAIN">
+-          <value>
+-            <State />
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+   </component>
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+-    <MESSAGE value="first step" />
+-    <option name="LAST_COMMIT_MESSAGE" value="first step" />
++    <MESSAGE value="mathModule" />
++    <MESSAGE value="getNew" />
++    <MESSAGE value="Init" />
++    <MESSAGE value="correctMathModule" />
++    <option name="LAST_COMMIT_MESSAGE" value="correctMathModule" />
++  </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <line-breakpoint enabled="true" type="java-method">
++          <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Matrix4x4.java</url>
++          <line>128</line>
++          <properties class="ru.vsu.cs.yesikov.math.Matrix4x4" method="clone">
++            <option name="EMULATED" value="true" />
++            <option name="WATCH_EXIT" value="false" />
++          </properties>
++          <option name="timeStamp" value="14" />
++        </line-breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
+   </component>
+ </project>
+\ No newline at end of file
