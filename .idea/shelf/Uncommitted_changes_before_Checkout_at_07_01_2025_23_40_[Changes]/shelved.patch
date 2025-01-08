@@ -1,0 +1,383 @@
+Index: src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ru.vsu.cs.yesikov.render_engine;\r\n\r\nimport java.util.ArrayList;\r\n\r\nimport javafx.scene.canvas.GraphicsContext;\r\nimport javax.vecmath.*;\r\nimport ru.vsu.cs.yesikov.model.Model;\r\n\r\nimport static ru.vsu.cs.yesikov.render_engine.GraphicConveyor.*;\r\n\r\npublic class RenderEngine {\r\n\r\n    public static void render(\r\n            final GraphicsContext graphicsContext,\r\n            final Camera camera,\r\n            final Model mesh,\r\n            final int width,\r\n            final int height)\r\n    {\r\n        Matrix4f modelMatrix = rotateScaleTranslate();\r\n        Matrix4f viewMatrix = camera.getViewMatrix();\r\n        Matrix4f projectionMatrix = camera.getProjectionMatrix();\r\n\r\n        Matrix4f modelViewProjectionMatrix = new Matrix4f(modelMatrix);\r\n        modelViewProjectionMatrix.mul(viewMatrix);\r\n        modelViewProjectionMatrix.mul(projectionMatrix);\r\n\r\n        final int nPolygons = mesh.polygons.size();\r\n        for (int polygonInd = 0; polygonInd < nPolygons; ++polygonInd) {\r\n            final int nVerticesInPolygon = mesh.polygons.get(polygonInd).getVertexIndices().size();\r\n\r\n            ArrayList<Point2f> resultPoints = new ArrayList<>();\r\n            for (int vertexInPolygonInd = 0; vertexInPolygonInd < nVerticesInPolygon; ++vertexInPolygonInd) {\r\n                ru.vsu.cs.yesikov.math.Vector3f vertex = mesh.vertices.get(mesh.polygons.get(polygonInd).getVertexIndices().get(vertexInPolygonInd));\r\n\r\n                javax.vecmath.Vector3f vertexVecmath = new javax.vecmath.Vector3f(vertex.x, vertex.y, vertex.z);\r\n\r\n                Point2f resultPoint = vertexToPoint(multiplyMatrix4ByVector3(modelViewProjectionMatrix, vertexVecmath), width, height);\r\n                resultPoints.add(resultPoint);\r\n            }\r\n\r\n            for (int vertexInPolygonInd = 1; vertexInPolygonInd < nVerticesInPolygon; ++vertexInPolygonInd) {\r\n                graphicsContext.strokeLine(\r\n                        resultPoints.get(vertexInPolygonInd - 1).x,\r\n                        resultPoints.get(vertexInPolygonInd - 1).y,\r\n                        resultPoints.get(vertexInPolygonInd).x,\r\n                        resultPoints.get(vertexInPolygonInd).y);\r\n            }\r\n\r\n            if (nVerticesInPolygon > 0)\r\n                graphicsContext.strokeLine(\r\n                        resultPoints.get(nVerticesInPolygon - 1).x,\r\n                        resultPoints.get(nVerticesInPolygon - 1).y,\r\n                        resultPoints.get(0).x,\r\n                        resultPoints.get(0).y);\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java b/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java
+--- a/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java	(revision fa00bed55bd521b85c3b3a28922150facacdc022)
++++ b/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java	(date 1736282338140)
+@@ -1,11 +1,16 @@
+ package ru.vsu.cs.yesikov.render_engine;
+ 
++import java.awt.*;
++import java.awt.image.BufferedImage;
+ import java.util.ArrayList;
++import java.util.List;
+ 
+ import javafx.scene.canvas.GraphicsContext;
+-import javax.vecmath.*;
++//import javax.vecmath.*;
+ import ru.vsu.cs.yesikov.model.Model;
++import ru.vsu.cs.yesikov.math.*;
+ 
++import static ru.vsu.cs.yesikov.render_engine.Coloring.getPixelColor;
+ import static ru.vsu.cs.yesikov.render_engine.GraphicConveyor.*;
+ 
+ public class RenderEngine {
+@@ -15,15 +20,14 @@
+             final Camera camera,
+             final Model mesh,
+             final int width,
+-            final int height)
+-    {
+-        Matrix4f modelMatrix = rotateScaleTranslate();
+-        Matrix4f viewMatrix = camera.getViewMatrix();
+-        Matrix4f projectionMatrix = camera.getProjectionMatrix();
++            final int height) {
++        Matrix4x4 modelMatrix = rotateScaleTranslate();
++        Matrix4x4 viewMatrix = camera.getViewMatrix();
++        Matrix4x4 projectionMatrix = camera.getProjectionMatrix();
+ 
+-        Matrix4f modelViewProjectionMatrix = new Matrix4f(modelMatrix);
+-        modelViewProjectionMatrix.mul(viewMatrix);
+-        modelViewProjectionMatrix.mul(projectionMatrix);
++        Matrix4x4 modelViewProjectionMatrix = new Matrix4x4(modelMatrix.getValues());
++        modelViewProjectionMatrix.multiply(viewMatrix);
++        modelViewProjectionMatrix.multiply(projectionMatrix);
+ 
+         final int nPolygons = mesh.polygons.size();
+         for (int polygonInd = 0; polygonInd < nPolygons; ++polygonInd) {
+@@ -31,9 +35,9 @@
+ 
+             ArrayList<Point2f> resultPoints = new ArrayList<>();
+             for (int vertexInPolygonInd = 0; vertexInPolygonInd < nVerticesInPolygon; ++vertexInPolygonInd) {
+-                ru.vsu.cs.yesikov.math.Vector3f vertex = mesh.vertices.get(mesh.polygons.get(polygonInd).getVertexIndices().get(vertexInPolygonInd));
++                Vector3f vertex = mesh.vertices.get(mesh.polygons.get(polygonInd).getVertexIndices().get(vertexInPolygonInd));
+ 
+-                javax.vecmath.Vector3f vertexVecmath = new javax.vecmath.Vector3f(vertex.x, vertex.y, vertex.z);
++                Vector3f vertexVecmath = new Vector3f(vertex.x(), vertex.y(), vertex.z());
+ 
+                 Point2f resultPoint = vertexToPoint(multiplyMatrix4ByVector3(modelViewProjectionMatrix, vertexVecmath), width, height);
+                 resultPoints.add(resultPoint);
+@@ -41,18 +45,137 @@
+ 
+             for (int vertexInPolygonInd = 1; vertexInPolygonInd < nVerticesInPolygon; ++vertexInPolygonInd) {
+                 graphicsContext.strokeLine(
+-                        resultPoints.get(vertexInPolygonInd - 1).x,
+-                        resultPoints.get(vertexInPolygonInd - 1).y,
+-                        resultPoints.get(vertexInPolygonInd).x,
+-                        resultPoints.get(vertexInPolygonInd).y);
++                        resultPoints.get(vertexInPolygonInd - 1).getX(),
++                        resultPoints.get(vertexInPolygonInd - 1).getY(),
++                        resultPoints.get(vertexInPolygonInd).getX(),
++                        resultPoints.get(vertexInPolygonInd).getY());
+             }
+ 
+             if (nVerticesInPolygon > 0)
+                 graphicsContext.strokeLine(
+-                        resultPoints.get(nVerticesInPolygon - 1).x,
+-                        resultPoints.get(nVerticesInPolygon - 1).y,
+-                        resultPoints.get(0).x,
+-                        resultPoints.get(0).y);
++                        resultPoints.get(nVerticesInPolygon - 1).getX(),
++                        resultPoints.get(nVerticesInPolygon - 1).getY(),
++                        resultPoints.get(0).getX(),
++                        resultPoints.get(0).getY());
++        }
++    }
++
++
++    private static void rasterizePolygon(
++            boolean haveSolidColor,
++            boolean haveTexture,
++            boolean haveShade,
++            Color modelColor,
++            GraphicsContext graphicsContext,
++            BufferedImage texture,
++            int width,
++            int height,
++            Model mesh,
++            Vector3f target,
++            Vector3f position,
++            int polygonInd,
++            ArrayList<Vector2f> points,
++            double[] zBuffer) {
++
++        List<Integer> vertexIndices = mesh.getPolygons().get(polygonInd).getVertexIndices();
++        Vector3f[] v = new Vector3f[]{mesh.getVertices().get(vertexIndices.get(0)), mesh.getVertices().get(vertexIndices.get(1)), mesh.getVertices().get(vertexIndices.get(2))};
++
++        float x1 = points.get(0).x();
++        float y1 = points.get(0).y();
++        float x2 = points.get(1).x();
++        float y2 = points.get(1).y();
++        float x3 = points.get(2).x();
++        float y3 = points.get(2).y();
++
++        int minX = (int) Math.max(0, Math.ceil(Math.min(x1, Math.min(x2, x3))));
++        int maxX = (int) Math.min(width - 1, Math.floor(Math.max(x1, Math.max(x2, x3))));
++
++        int minY = (int) Math.max(0, Math.ceil(Math.min(y1, Math.min(y2, y3))));
++        int maxY = (int) Math.min(height - 1, Math.floor(Math.max(y1, Math.max(y2, y3))));
++
++        for (int y = minY; y <= maxY; y++) {
++            for (int x = minX; x <= maxX; x++) {
++                BarycentricCoordinates bCoordinates = new BarycentricCoordinates(x, y, x1, x2, x3, y1, y2, y3);
++                if (bCoordinates.getU() >= 0 && bCoordinates.getU() <= 1 && bCoordinates.getV() >= 0 && bCoordinates.getV() <= 1 && bCoordinates.getW() >= 0 && bCoordinates.getW() <= 1) {
++                    float depth = (float) (bCoordinates.getU() * v[0].z() + bCoordinates.getV() * v[1].z() + bCoordinates.getW() * v[2].z());
++                    int zIndex = y * width + x;
++                    if (zBuffer[zIndex] < depth) {
++                        if (haveTexture) {
++                            ArrayList<Integer> textureVertexIndices = mesh.getPolygons().get(polygonInd).getTextureVertexIndices();
++                            Vector2f[] vt = new Vector2f[]{mesh.getTextureVertices().get(textureVertexIndices.get(0)), mesh.getTextureVertices().get(textureVertexIndices.get(1)), mesh.getTextureVertices().get(textureVertexIndices.get(2))};
++
++                            float xt = (float) (bCoordinates.getU() * vt[0].x() + bCoordinates.getV() * vt[1].x() + bCoordinates.getW() * vt[2].x());
++                            float yt = (float) (1 - (bCoordinates.getU() * vt[0].y() + bCoordinates.getV() * vt[1].y() + bCoordinates.getW() * vt[2].y()));
++
++                            if (haveShade) {
++                                Vector3f[] vn = new Vector3f[]{mesh.getNormals().get(vertexIndices.get(0)), mesh.getNormals().get(vertexIndices.get(1)), mesh.getNormals().get(vertexIndices.get(2))};
++                                drawPixel(graphicsContext, x, y, xt, yt, bCoordinates, vn, target, position, texture);
++                            } else {
++                                drawPixel(graphicsContext, x, y, xt, yt, texture);
++                            }
++                        } else {
++                            if (haveSolidColor) {
++                                int color = modelColor.getRGB();
++                                if (haveShade) {
++                                    Vector3f[] vn = new Vector3f[]{mesh.getNormals().get(vertexIndices.get(0)), mesh.getNormals().get(vertexIndices.get(1)), mesh.getNormals().get(vertexIndices.get(2))};
++                                    drawPixel(graphicsContext, x, y, bCoordinates, vn, target, position, color);
++                                } else {
++                                    drawPixel(graphicsContext, x, y, color);
++                                }
++                            }
++                        }
++                        zBuffer[zIndex] = depth;
++                    }
++                }
++            }
++        }
++    }
++
++    // Рисование пикселей на экране
++    private static void drawPixel(GraphicsContext graphicsContext, int x, int y, int color) {
++        graphicsContext.getPixelWriter().setArgb(x, y, color);
++    }
++
++    private static void drawPixel(GraphicsContext graphicsContext, int x, int y, BarycentricCoordinates bCoordinates, Vector3f[] polygonNormals, Vector3f target, Vector3f position, int color) {
++        Shadow shadow = new Shadow(polygonNormals, target, position);
++        color = getPixelColor(shadow.calculateShadeCoefficients(bCoordinates), color);
++        graphicsContext.getPixelWriter().setArgb(x, y, color);
++    }
++
++    private static void drawPixel(GraphicsContext graphicsContext, int x, int y, float xt, float yt, BufferedImage texture) {
++        int color = getPixelColor(xt, yt, texture);
++        graphicsContext.getPixelWriter().setArgb(x, y, color);
++    }
++
++    private static void drawPixel(GraphicsContext graphicsContext, int x, int y, float xt, float yt, BarycentricCoordinates bCoordinates, Vector3f[] polygonNormals, Vector3f target, Vector3f position, BufferedImage texture) {
++        Shadow shadow = new Shadow(polygonNormals, target, position);
++        int color = getPixelColor(shadow.calculateShadeCoefficients(bCoordinates), xt, yt, texture);
++        graphicsContext.getPixelWriter().setArgb(x, y, color);
++    }
++
++    // Полигональная сетка
++    private static void drawMesh(
++            GraphicsContext graphicsContext,
++            javafx.scene.paint.Color meshColor,
++            int nVerticesInPolygon,
++            ArrayList<Vector2f> resultPoints) {
++        graphicsContext.setStroke(meshColor);
++        for (int vertexInPolygonInd = 1; vertexInPolygonInd < nVerticesInPolygon; ++vertexInPolygonInd) {
++            graphicsContext.strokeLine(
++                    resultPoints.get(vertexInPolygonInd - 1).x(),
++                    resultPoints.get(vertexInPolygonInd - 1).y(),
++                    resultPoints.get(vertexInPolygonInd).x(),
++                    resultPoints.get(vertexInPolygonInd).y());
+         }
++
++        if (nVerticesInPolygon > 0) {
++            graphicsContext.strokeLine(
++                    resultPoints.get(nVerticesInPolygon - 1).x(),
++                    resultPoints.get(nVerticesInPolygon - 1).y(),
++                    resultPoints.get(0).x(),
++                    resultPoints.get(0).y());
++        }
+     }
++
++
+ }
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"92beaa7b-bd3b-4c10-b82b-d7d23c22cf41\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/encodings.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/module-info.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/Main.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/Simple3DViewer.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector2f.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Polygon.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReader.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReaderException.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Camera.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/GraphicConveyor.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/ru/vsu/cs/yesikov/fxml/gui.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 0\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2r88kignTN6S22AKM5rl0T2kGfe\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"Application.Simple3DViewer.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"D:/Java, C++, Python/Java/KgTask4/src\",\r\n    \"onboarding.tips.debug.path\": \"D:/Java, C++, Python/Java/KgTask4/src/main/java/ru/vsu/cs/yesikov/Main.java\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\\src\" />\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\" />\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\\src\\main\\resources\" />\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\\src\\main\\java\" />\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\\src\\main\\java\\ru\\vsu\\cs\\yesikov\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\" />\r\n      <recent name=\"D:\\Java, C++, Python\\Java\\KgTask4\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"ru.vsu.cs.yesikov.Main\" />\r\n      <module name=\"KgTask4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"ru.vsu.cs.yesikov.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Simple3DViewer\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"ru.vsu.cs.yesikov.Simple3DViewer\" />\r\n      <module name=\"KgTask4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"ru.vsu.cs.yesikov.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Simple3DViewer\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"92beaa7b-bd3b-4c10-b82b-d7d23c22cf41\" name=\"Changes\" comment=\"\" />\r\n      <created>1735929486935</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1735929486935</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision fa00bed55bd521b85c3b3a28922150facacdc022)
++++ b/.idea/workspace.xml	(date 1736282360117)
+@@ -4,39 +4,31 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/Main.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/Simple3DViewer.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector2f.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/math/Vector3f.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Model.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/model/Polygon.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReader.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/objreader/ObjReaderException.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/Camera.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/GraphicConveyor.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/render_engine/RenderEngine.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/ru/vsu/cs/yesikov/fxml/gui.fxml" afterDir="false" />
+-    </list>
++    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="first step" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="master" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++    <option name="RESET_MODE" value="MIXED" />
+   </component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 0
+-}]]></component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 0
++}</component>
+   <component name="ProjectId" id="2r88kignTN6S22AKM5rl0T2kGfe" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+@@ -45,22 +37,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_ADD_EXTERNAL_FILES": "true",
+-    "Application.Main.executor": "Run",
+-    "Application.Simple3DViewer.executor": "Run",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "git-widget-placeholder": "master",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "D:/Java, C++, Python/Java/KgTask4/src",
+-    "onboarding.tips.debug.path": "D:/Java, C++, Python/Java/KgTask4/src/main/java/ru/vsu/cs/yesikov/Main.java",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.2"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
++    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
++    &quot;Application.Simple3DViewer.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;3__1part&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/IdeaProjects/3DViewer_task_4-master&quot;,
++    &quot;onboarding.tips.debug.path&quot;: &quot;D:/Java, C++, Python/Java/KgTask4/src/main/java/ru/vsu/cs/yesikov/Main.java&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="D:\Java, C++, Python\Java\KgTask4\src" />
+@@ -74,7 +67,7 @@
+       <recent name="D:\Java, C++, Python\Java\KgTask4\src" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Application.Main">
++  <component name="RunManager">
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.yesikov.Main" />
+       <module name="KgTask4" />
+@@ -103,6 +96,8 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.Simple3DViewer" />
++        <item itemvalue="Application.Main" />
+         <item itemvalue="Application.Main" />
+         <item itemvalue="Application.Simple3DViewer" />
+       </list>
+@@ -117,9 +112,47 @@
+       <option name="presentableId" value="Default" />
+       <updated>1735929486935</updated>
+     </task>
++    <task id="LOCAL-00001" summary="first step">
++      <option name="closed" value="true" />
++      <created>1736096642347</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1736096642347</updated>
++    </task>
++    <task id="LOCAL-00002" summary="first step">
++      <option name="closed" value="true" />
++      <created>1736197302031</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1736197302031</updated>
++    </task>
++    <task id="LOCAL-00003" summary="first step">
++      <option name="closed" value="true" />
++      <created>1736205132947</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1736205132947</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
++    <MESSAGE value="first step" />
++    <option name="LAST_COMMIT_MESSAGE" value="first step" />
+   </component>
+ </project>
+\ No newline at end of file

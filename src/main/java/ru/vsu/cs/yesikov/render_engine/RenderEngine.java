@@ -235,7 +235,6 @@ public class RenderEngine {
         graphicsContext.getPixelWriter().setArgb(x, y, color);
     }
 
-    // Полигональная сетка
     private static void drawMesh(
             GraphicsContext graphicsContext,
             javafx.scene.paint.Color meshColor,
