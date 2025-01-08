@@ -79,10 +79,14 @@
             <Pane>
                 <VBox spacing="5">
                     <Label text="Настройка внешнего вида"/>
-                    <RadioButton focusTraversable="false" fx:id="radioButtonMesh"  mnemonicParsing="false"  text="Показать сетку"/>
-                    <RadioButton focusTraversable="false" fx:id="radioButtonTexture"  mnemonicParsing="false"  text="Включить текстуру"/>
-                    <Button focusTraversable="false" mnemonicParsing="false" onAction="#selectTexture" text="Выбрать текстуру" textAlignment="CENTER"/>
-                    <RadioButton focusTraversable="false" fx:id="radioButtonShades"  mnemonicParsing="false"  text="Включить свет"/>
+                    <CheckBox focusTraversable="false" fx:id="turnOnGrid" mnemonicParsing="false"
+                              text="Показать сетку"/>
+                    <CheckBox focusTraversable="false" fx:id="turnOnTexture" mnemonicParsing="false"
+                              text="Включить текстуру"/>
+                    <Button focusTraversable="false" mnemonicParsing="false" onAction="#selectTexture"
+                            text="Выбрать текстуру" textAlignment="CENTER"/>
+                    <CheckBox focusTraversable="false" fx:id="turnOnLight" mnemonicParsing="false"
+                              text="Включить свет"/>
                 </VBox>
             </Pane>
             <Pane>
