@@ -149,6 +149,7 @@ public class GuiController {
 
     @FXML
     public void onSaveModelMenuItemClick(ActionEvent actionEvent) {
+        saveModel(actionEvent);
     }
 
     @FXML
