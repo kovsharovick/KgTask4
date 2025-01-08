@@ -7,24 +7,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.canvas.Canvas?>
 
-<AnchorPane fx:id="anchorPane" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.vsu.cs.yesikov.GuiController">
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ProgressBar?>
+<AnchorPane fx:id="anchorPane" maxHeight="1080.0" maxWidth="1920.0" minHeight="480.0" minWidth="640.0"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.vsu.cs.yesikov.GuiController">
+
     <MenuBar>
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#onOpenModelMenuItemClick" text="Load Model">
-            <accelerator>
-                <KeyCodeCombination alt="UP" control="DOWN" meta="UP" shift="UP" shortcut="UP" code="F"/>
-            </accelerator>
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#onSaveModelMenuItemClick" text="Save Model">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
             </MenuItem>
         </Menu>
         <Menu mnemonicParsing="false" text="Camera Options">
             <MenuItem mnemonicParsing="false" onAction="#handleCameraForward" text="Forward">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="UP"/>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="W"/>
                 </accelerator>
             </MenuItem>
             <MenuItem mnemonicParsing="false" onAction="#handleCameraBackward" text="Backward">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="DOWN"/>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="S"/>
                 </accelerator>
             </MenuItem>
             <MenuItem mnemonicParsing="false" onAction="#handleCameraLeft" text="Left">
@@ -39,16 +59,108 @@
             </MenuItem>
             <MenuItem mnemonicParsing="false" onAction="#handleCameraUp" text="Up">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="W"/>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="UP"/>
                 </accelerator>
             </MenuItem>
             <MenuItem mnemonicParsing="false" onAction="#handleCameraDown" text="Down">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="S"/>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="DOWN"/>
                 </accelerator>
             </MenuItem>
         </Menu>
     </MenuBar>
 
     <Canvas fx:id="canvas" width="1600" height="870" AnchorPane.topAnchor="30.0"/>
+
+    <Pane fx:id="sidebar" layoutX="939.0" layoutY="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+          prefHeight="905.0" prefWidth="552.0">
+        <VBox pickOnBounds="false" prefHeight="877.0" prefWidth="550.0" spacing="5">
+            <Pane>
+                <VBox spacing="5">
+                    <Label text="Настройка внешнего вида"/>
+                    <CheckBox focusTraversable="false" fx:id="turnOnGrid" mnemonicParsing="false"
+                              text="Показать сетку"/>
+                    <CheckBox focusTraversable="false" fx:id="turnOnTexture" mnemonicParsing="false"
+                              text="Включить текстуру"/>
+                    <Button focusTraversable="false" mnemonicParsing="false" onAction="#selectTexture"
+                            text="Выбрать текстуру" textAlignment="CENTER"/>
+                    <CheckBox focusTraversable="false" fx:id="turnOnLight" mnemonicParsing="false"
+                              text="Включить свет"/>
+                </VBox>
+            </Pane>
+            <Pane>
+                <VBox pickOnBounds="false" spacing="5">
+                    <Label text="Трансформации"/>
+                    <GridPane alignment="CENTER" hgap="5" vgap="5">
+                        <columnConstraints>
+                            <ColumnConstraints maxWidth="100.0" minWidth="10.0" percentWidth="127.0"/>
+                            <ColumnConstraints maxWidth="100.0" minWidth="10.0" percentWidth="105.0"
+                                               prefWidth="100.0"/>
+                            <ColumnConstraints maxWidth="100.0" minWidth="10.0" percentWidth="105.0"/>
+                            <ColumnConstraints maxWidth="100.0" minWidth="10.0" percentWidth="105.0"/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            <RowConstraints/>
+                            <RowConstraints/>
+                            <RowConstraints/>
+                        </rowConstraints>
+                        <Label text="Масштабировать" GridPane.columnSpan="3" GridPane.rowIndex="1"/>
+                        <Label alignment="CENTER" prefHeight="18.0" prefWidth="128.0" text="X"
+                               GridPane.columnIndex="1"/>
+                        <TextField focusTraversable="false" fx:id="scaleX" promptText="1" text="1"
+                                   GridPane.columnIndex="1"
+                                   GridPane.rowIndex="1"/>
+                        <Label alignment="CENTER" prefHeight="18.0" prefWidth="125.0" text="Y"
+                               textAlignment="CENTER" GridPane.columnIndex="2"/>
+                        <TextField focusTraversable="false" fx:id="scaleY" promptText="1" text="1"
+                                   GridPane.columnIndex="2"
+                                   GridPane.rowIndex="1"/>
+                        <Label alignment="CENTER" prefHeight="18.0" prefWidth="120.0" text="Z"
+                               GridPane.columnIndex="3"/>
+                        <TextField focusTraversable="false" fx:id="translateY" promptText="0" text="0"
+                                   GridPane.columnIndex="2"
+                                   GridPane.rowIndex="3"/>
+                        <Label text="Повернуть" GridPane.columnSpan="3" GridPane.rowIndex="2"/>
+                        <TextField focusTraversable="false" fx:id="rotateX" promptText="0" text="0"
+                                   GridPane.columnIndex="1"
+                                   GridPane.rowIndex="2"/>
+                        <Label text="Переместить" GridPane.rowIndex="3"/>
+                        <TextField focusTraversable="false" fx:id="rotateY" promptText="0" text="0"
+                                   GridPane.columnIndex="2"
+                                   GridPane.rowIndex="2"/>
+                        <TextField focusTraversable="false" fx:id="translateX" promptText="0" text="0"
+                                   GridPane.columnIndex="1"
+                                   GridPane.rowIndex="3"/>
+                        <TextField focusTraversable="false" fx:id="scaleZ" promptText="1" text="1"
+                                   GridPane.columnIndex="3"
+                                   GridPane.rowIndex="1"/>
+                        <TextField focusTraversable="false" fx:id="rotateZ" promptText="0" text="0"
+                                   GridPane.columnIndex="3"
+                                   GridPane.rowIndex="2"/>
+                        <TextField focusTraversable="false" fx:id="translateZ" promptText="0" text="0"
+                                   GridPane.columnIndex="3"
+                                   GridPane.rowIndex="3"/>
+                    </GridPane>
+                    <Button focusTraversable="false" mnemonicParsing="false" onAction="#transformation"
+                            text="Применить" textAlignment="CENTER"/>
+                    <Button focusTraversable="false" mnemonicParsing="false" onAction="#returnBackCamera"
+                            text="Сбросить перемещения камеры" textAlignment="CENTER"/>
+                    <Button focusTraversable="false" mnemonicParsing="false" onAction="#returnBackModel"
+                            text="Сбросить трансформации" textAlignment="CENTER"/>
+                    <Button focusTraversable="false" mnemonicParsing="false" text="Сохранить модель"
+                            onAction="#saveModel">
+                        <HBox.margin>
+                            <Insets/>
+                        </HBox.margin>
+                    </Button>
+                </VBox>
+            </Pane>
+        </VBox>
+    </Pane>
+
+    <ProgressBar fx:id="progressBar" layoutX="204.0" layoutY="895.0" prefHeight="10.0" progress="0.0" visible="false"
+                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+
 </AnchorPane>

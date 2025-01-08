@@ -145,6 +145,7 @@ public class MathPart {
         System.arraycopy(result, 0, matrix, 0, matrix.length);
     }
 
+
     public static float[][] getNewMultiply(float[][] matrix1, float[][] matrix2) {
         if (matrix1[0].length != matrix2.length) {
             throw new IllegalArgumentException("Number columns first matrix must match number rows second matrix");

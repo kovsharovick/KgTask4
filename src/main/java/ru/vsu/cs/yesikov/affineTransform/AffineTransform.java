@@ -25,10 +25,26 @@ public class AffineTransform {
         return rotate(angle.getX(), angle.getY(), angle.getZ(), "xyz");
     }
 
+    public static void reverseAffineTransform(Model model, float sX, float sY, float sZ,
+                                       float rX, float rY, float rZ,
+                                       float tX, float tY, float tZ) {
+        Matrix4x4 T = translation(tX, tY, tZ);
+        Matrix4x4 R = rotate(rX, rY, rZ, "zyx");
+        Matrix4x4 affineTransform = scale(sX, sY, sZ);
+        affineTransform.multiply(R.getValues());
+        affineTransform.multiply(T.getValues());
+        for (Vector3f v : model.vertices) {
+            v.change4fto3f(multiplyByVector(affineTransform, v.toVector4f(1)));
+        }
+        for (Vector3f v : model.normals) {
+            v.change4fto3f(multiplyByVector(affineTransform, v.toVector4f(0)));
+        }
+    }
 
-    public static void affineTransform(Model model, int sX, int sY, int sZ,
-                                       int rX, int rY, int rZ, String order,
-                                       int tX, int tY, int tZ) {
+
+    public static void affineTransform(Model model, float sX, float sY, float sZ,
+                                       float rX, float rY, float rZ, String order,
+                                       float tX, float tY, float tZ) {
         Matrix4x4 affineTransform = translation(tX, tY, tZ);
         Matrix4x4 R = rotate(rX, rY, rZ, order);
         Matrix4x4 S = scale(sX, sY, sZ);
