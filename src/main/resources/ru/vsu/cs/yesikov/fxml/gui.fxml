@@ -80,7 +80,7 @@
                 <VBox spacing="5">
                     <Label text="Настройка внешнего вида"/>
                     <CheckBox focusTraversable="false" fx:id="turnOnGrid" mnemonicParsing="false"
-                              text="Показать сетку"/>
+                              text="Показать сетку" />
                     <CheckBox focusTraversable="false" fx:id="turnOnTexture" mnemonicParsing="false"
                               text="Включить текстуру"/>
                     <Button focusTraversable="false" mnemonicParsing="false" onAction="#selectTexture"

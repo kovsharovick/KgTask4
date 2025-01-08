@@ -2,7 +2,6 @@ package ru.vsu.cs.yesikov;
 
 import javafx.scene.control.*;
 import javafx.application.Platform;
-import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
