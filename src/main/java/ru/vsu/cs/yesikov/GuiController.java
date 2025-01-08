@@ -182,6 +182,35 @@ public class GuiController {
     public void handleCameraDown(ActionEvent actionEvent) {
         camera.movePosition(new Vector3f(0, TRANSLATION, 0));
         camera.moveTarget(new Vector3f(0, TRANSLATION, 0));
+
+    }
+
+    @FXML
+    public void handleCameraRotateLeft(ActionEvent actionEvent) {
+        camera.setPosition(
+                Matrix4x4.multiplyByVector(AffineTransform.getRotateMatrix(new Vector3f(0, TRANSLATION, 0)),
+                        camera.getPosition().toVector4f(1)).toVector3f());
+    }
+
+    @FXML
+    public void handleCameraRotateRight(ActionEvent actionEvent) {
+        camera.setPosition(
+                Matrix4x4.multiplyByVector(AffineTransform.getRotateMatrix(new Vector3f(0, -TRANSLATION, 0)),
+                        camera.getPosition().toVector4f(1)).toVector3f());
+    }
+
+    @FXML
+    public void handleCameraRotateUp(ActionEvent actionEvent) {
+        camera.setPosition(
+                Matrix4x4.multiplyByVector(AffineTransform.getRotateMatrix(new Vector3f(TRANSLATION, 0, 0)),
+                        camera.getPosition().toVector4f(1)).toVector3f());
+    }
+
+    @FXML
+    public void handleCameraRotateDown(ActionEvent actionEvent) {
+        camera.setPosition(
+                Matrix4x4.multiplyByVector(AffineTransform.getRotateMatrix(new Vector3f(-TRANSLATION, 0, 0)),
+                        camera.getPosition().toVector4f(1)).toVector3f());
     }
 
     @FXML
