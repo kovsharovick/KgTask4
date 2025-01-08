@@ -56,9 +56,7 @@ public class Camera {
     }
 
     public void rotateCamera(final Matrix4x4 mR) throws Exception {
-        Vector3f vZ = Vector3f.getNewSub(target, position);
-        vZ = GraphicConveyor.multiplyMatrix4ByVector3(mR, vZ);
-        target = Vector3f.getNewAdd(position, vZ);
+        target = Vector3f.getNewAdd(position, GraphicConveyor.multiplyMatrix4ByVector3(mR, Vector3f.getNewSub(target, position)));
     }
 
     public Matrix4x4 getViewMatrix() {

@@ -107,7 +107,7 @@ public class GuiController {
                 this.startXForMouse = (float) mouseEvent.getX();
                 this.startYForMouse = (float) mouseEvent.getY();
                 Vector3f startTarget = camera.getTarget();
-                dragStartTarget = new Vector3f(startTarget.getX(), startTarget.getY(), 0/*startTarget.getZ()*/);
+                dragStartTarget = new Vector3f(startTarget.getX(), startTarget.getY(), startTarget.getZ());
             }
         });
 
