@@ -71,8 +71,7 @@ public class Model {
     }
 
     private boolean shouldInvertNormal(Vector3f normal, ArrayList<Integer> face) {
-        // Логика для проверки необходимости инвертирования нормали
-        return false;  // По умолчанию - не инвертировать
+        return false;
     }
 
     public static void triangulate(Model model) {
@@ -101,5 +100,12 @@ public class Model {
             }
         }
         model.polygons = triangulatedPolygons;
+    }
+    public Model(Model model) throws Exception {
+        vertices = model.getVertices();
+        textureVertices = model.textureVertices;
+        normals = model.getNormals();
+        polygons = model.getPolygons();
+        recalculateNormals(model);
     }
 }
