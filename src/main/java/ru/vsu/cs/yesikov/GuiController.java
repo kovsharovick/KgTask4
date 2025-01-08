@@ -1,9 +1,9 @@
 package ru.vsu.cs.yesikov;
 
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import ru.vsu.cs.yesikov.model.ModifiedModel;
+import ru.vsu.cs.yesikov.render_engine.CameraController;
 import ru.vsu.cs.yesikov.render_engine.RenderEngine;
 import javafx.fxml.FXML;
 import javafx.animation.Animation;
@@ -25,6 +25,7 @@ import ru.vsu.cs.yesikov.math.*;
 import ru.vsu.cs.yesikov.model.Model;
 import ru.vsu.cs.yesikov.objreader.ObjReader;
 import ru.vsu.cs.yesikov.render_engine.Camera;
+import ru.vsu.cs.yesikov.render_engine.Scene;
 
 public class GuiController {
 
@@ -43,12 +44,23 @@ public class GuiController {
     public TextField scaleX;
     public TextField scaleY;
     public TextField scaleZ;
+    private Scene scene;
 
     @FXML
     AnchorPane anchorPane;
 
     @FXML
     private Canvas canvas;
+    @FXML
+    public ColorPicker modelColor;
+    @FXML
+    public RadioButton radioButtonMesh;
+    @FXML
+    public RadioButton radioButtonTexture;
+    @FXML
+    public RadioButton radioButtonShades;
+    @FXML
+    public RadioButton radioButtonSolidColor;
     private boolean isRotationActive;
     private final Vector2f currentMouseCoordinates = new Vector2f(0, 0);
     private final Vector2f centerCoordinates = new Vector2f(0, 0);
@@ -69,20 +81,61 @@ public class GuiController {
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
 
+        scene = new Scene();
+
+        scene.getCameraControllers().add(new CameraController(new Camera(
+                new Vector3f(0, 0, 100),
+                new Vector3f(0, 0, 0),
+                1.0F, 1, 0.01F, 100), TRANSLATION));
+        scene.setCurrentCameraController(scene.getCameraControllers().get(0));
+
         KeyFrame frame = new KeyFrame(Duration.millis(15), event -> {
             double width = canvas.getWidth();
             double height = canvas.getHeight();
 
             canvas.getGraphicsContext2D().clearRect(0, 0, width, height);
-            camera.setAspectRatio((float) (width / height));
+            scene.getCurrentCameraController().getCamera().setAspectRatio((float) (width / height));
 
-            if (mesh != null) {
-                RenderEngine.render(canvas.getGraphicsContext2D(), camera, mesh, (int) width, (int) height);
+
+            if (isRotationActive) {
+                rotateCamera();
+            }
+
+            if (!scene.getActiveModels().isEmpty()) {
+                try {
+                    for (ModifiedModel model : scene.getActiveModels()) {
+                        RenderEngine.render(canvas.getGraphicsContext2D(), scene.getCurrentCameraController().getCamera(),
+                                model.getTransformedModel(), (int) width, (int) height,
+                                modelColor.getValue(), model.getTexture(), getRenderWayData());
+                    }
+                } catch (Exception e) {
+//                    showExceptionNotification(e);
+                }
             }
         });
 
         timeline.getKeyFrames().add(frame);
         timeline.play();
+    }
+    public void rotateCamera() {
+        centerCoordinates.setX((float) (canvas.getWidth() / 2));
+        centerCoordinates.setY((float) (canvas.getHeight() / 2));
+
+        float diffX = currentMouseCoordinates.getX() - centerCoordinates.getX();
+        float diffY = currentMouseCoordinates.getY() - centerCoordinates.getY();
+
+        float xAngle = (float) ((diffX / canvas.getWidth()) * 1);
+        float yAngle = (float) ((diffY / canvas.getHeight()) * -1);
+
+        try {
+            scene.getCurrentCameraController().rotateCamera(new Vector2f(xAngle, yAngle));
+        } catch (Exception e) {
+//            showExceptionNotification(e);
+        }
+    }
+    public boolean[] getRenderWayData() {
+        return new boolean[] {radioButtonMesh.isSelected(), radioButtonShades.isSelected(),
+                radioButtonTexture.isSelected(), radioButtonSolidColor.isSelected()};
     }
 
     @FXML
@@ -101,7 +154,7 @@ public class GuiController {
         try {
             String fileContent = Files.readString(fileName);
             mesh = ObjReader.read(fileContent);
-            mesh.recalculateNormals(mesh);
+            mesh.recalculateNormals();
             Model.triangulate(mesh);
             // todo: обработка ошибок
         } catch (IOException exception) {

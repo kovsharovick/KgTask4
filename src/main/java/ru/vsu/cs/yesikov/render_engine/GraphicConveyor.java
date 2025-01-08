@@ -64,4 +64,92 @@ public class GraphicConveyor {
     public static Point2f vertexToPoint(final Vector3f vertex, final int width, final int height) {
         return new Point2f(vertex.getX() * width + width / 2.0F, -vertex.getY() * height + height / 2.0F);
     }
+    public static Matrix4x4 getRotationMatrix(Vector3f angle) throws Exception {
+        if (angle.getX() > 360 || angle.getY() > 360 || angle.getZ() > 360) {
+            throw new Exception("The absolute value angle should be less than 360!");
+        }
+        Matrix4x4 matrixRotation = new Matrix4x4(new float[4][4]);
+        matrixRotation.setIdentity();
+
+        Matrix4x4 matrixRotationX = getRotationMatrixX(angle.getX());
+        Matrix4x4 matrixRotationY = getRotationMatrixY(angle.getY());
+        Matrix4x4 matrixRotationZ = getRotationMatrixZ(angle.getZ());
+
+        matrixRotation.multiply(matrixRotationX);
+        matrixRotation.multiply(matrixRotationY);
+        matrixRotation.multiply(matrixRotationZ);
+
+        return matrixRotation;
+    }
+    private static Matrix4x4 getRotationMatrixX(double xAngle) {
+        xAngle = Math.toRadians(xAngle);
+        Matrix4x4 matrixRotationX = new Matrix4x4(new float[4][4]);
+        matrixRotationX.setIdentity();
+
+        matrixRotationX.getValues()[1][1] = (float) Math.cos(xAngle);
+        matrixRotationX.getValues()[2][2] = (float) Math.cos(xAngle);
+        matrixRotationX.getValues()[2][1] = (float) Math.sin(xAngle);
+        matrixRotationX.getValues()[1][2] = (float) (-Math.sin(xAngle));
+
+
+        return matrixRotationX;
+    }
+
+    private static Matrix4x4 getRotationMatrixY(double yAngle) {
+        yAngle = Math.toRadians(yAngle);
+        Matrix4x4 matrixRotationY = new Matrix4x4(new float[4][4]);
+        matrixRotationY.setIdentity();
+
+        matrixRotationY.getValues()[0][0] = (float) Math.cos(yAngle);
+        matrixRotationY.getValues()[2][2] = (float) Math.cos(yAngle);
+        matrixRotationY.getValues()[2][0] = (float) (-Math.sin(yAngle));
+        matrixRotationY.getValues()[0][2] = (float) Math.sin(yAngle);
+
+        return matrixRotationY;
+    }
+
+    private static Matrix4x4 getRotationMatrixZ(double zAngle) {
+        zAngle = Math.toRadians(zAngle);
+        Matrix4x4 matrixRotationZ = new Matrix4x4(new float[4][4]);
+        matrixRotationZ.setIdentity();
+
+        matrixRotationZ.getValues()[0][0] = (float) Math.cos(zAngle);
+        matrixRotationZ.getValues()[1][1] = (float) Math.cos(zAngle);
+        matrixRotationZ.getValues()[0][1] = (float) (-Math.sin(zAngle));
+        matrixRotationZ.getValues()[1][0] = (float) Math.sin(zAngle);
+
+        return matrixRotationZ;
+    }
+    public static Matrix4x4 getModelMatrix(Vector3f translate, Vector3f anglesOfRotate, Vector3f scale) throws Exception {
+        Matrix4x4 modelMatrix = new Matrix4x4(new float[4][4]);
+        modelMatrix.setIdentity();
+
+        Matrix4x4 translationMatrix = getTranslationMatrix(translate);
+        Matrix4x4 rotationMatrix = getRotationMatrix(anglesOfRotate);
+        Matrix4x4 scaleMatrix = getScaleMatrix(scale);
+
+        modelMatrix.multiply(translationMatrix);
+        modelMatrix.multiply(rotationMatrix);
+        modelMatrix.multiply(scaleMatrix);
+
+
+        return modelMatrix;
+    }
+    private static Matrix4x4 getTranslationMatrix(Vector3f translate) {
+        Matrix4x4 matrixTranslation = new Matrix4x4(new float[4][4]);
+        matrixTranslation.setIdentity();
+        matrixTranslation.getValues()[3][0] = translate.getX();//Уточнить
+        matrixTranslation.getValues()[3][1] = translate.getY();
+        matrixTranslation.getValues()[3][2] = translate.getZ();
+
+        return matrixTranslation;
+    }
+    private static Matrix4x4 getScaleMatrix(Vector3f scale) {
+        Matrix4x4 matrixScale = new Matrix4x4(new float[4][4]);
+        matrixScale.setIdentity();
+        matrixScale.getValues()[0][0] = scale.getX();
+        matrixScale.getValues()[1][1] = scale.getY();
+        matrixScale.getValues()[2][2] = scale.getZ();
+        return matrixScale;
+    }
 }

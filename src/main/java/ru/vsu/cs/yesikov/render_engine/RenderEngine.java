@@ -20,10 +20,10 @@ public class RenderEngine {
             final Camera camera,
             final Model mesh,
             final int width,
-            final int height/*,
+            final int height,
             final javafx.scene.paint.Color modelColor,
             BufferedImage texture,
-            final boolean[] renderingStatements*/) {
+            final boolean[] renderingStatements) {
         Matrix4x4 modelMatrix = rotateScaleTranslate();
         Matrix4x4 viewMatrix = camera.getViewMatrix();
         Matrix4x4 projectionMatrix = camera.getProjectionMatrix();
@@ -66,7 +66,7 @@ public class RenderEngine {
                         resultPoints.get(0).getX(),
                         resultPoints.get(0).getY());
 
-            /*startRender(renderingStatements[0],
+            startRender(renderingStatements[0],
                     renderingStatements[1],
                     renderingStatements[2],
                     renderingStatements[3],
@@ -81,7 +81,7 @@ public class RenderEngine {
                     polygonInd,
                     nVerticesInPolygon,
                     resultPoints,
-                    zBuffer);*/
+                    zBuffer);
         }
     }
 
