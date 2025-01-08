@@ -145,6 +145,10 @@
                     </GridPane>
                     <Button focusTraversable="false" mnemonicParsing="false" onAction="#transformation"
                             text="Применить" textAlignment="CENTER"/>
+                    <Button focusTraversable="false" mnemonicParsing="false" onAction="#returnBackCamera"
+                            text="Сбросить перемещения камеры" textAlignment="CENTER"/>
+                    <Button focusTraversable="false" mnemonicParsing="false" onAction="#returnBackModel"
+                            text="Сбросить трансформации" textAlignment="CENTER"/>
                     <Button focusTraversable="false" mnemonicParsing="false" text="Сохранить модель"
                             onAction="#saveModel">
                         <HBox.margin>
