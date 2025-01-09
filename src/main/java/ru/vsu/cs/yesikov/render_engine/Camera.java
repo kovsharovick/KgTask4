@@ -66,5 +66,9 @@ public class Camera {
     public Matrix4x4 getProjectionMatrix() {
         return GraphicConveyor.perspective(fov, aspectRatio, nearPlane, farPlane);
     }
+    public void moveCamera(final Vector3f translation) {
+        movePosition(translation);
+        moveTarget(translation);
+    }
 
 }

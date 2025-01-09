@@ -19,6 +19,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.RadioButton?>
 <AnchorPane fx:id="anchorPane" maxHeight="1080.0" maxWidth="1920.0" minHeight="480.0" minWidth="640.0"
             xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ru.vsu.cs.yesikov.GuiController">
@@ -99,7 +100,7 @@
                 <VBox spacing="5">
                     <Label text="Настройка внешнего вида"/>
                     <CheckBox focusTraversable="false" fx:id="turnOnGrid" mnemonicParsing="false"
-                              text="Показать сетку"/>
+                              text="Показать сетку" />
                     <CheckBox focusTraversable="false" fx:id="turnOnTexture" mnemonicParsing="false"
                               text="Включить текстуру"/>
                     <Button focusTraversable="false" mnemonicParsing="false" onAction="#selectTexture"

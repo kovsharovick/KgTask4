@@ -5,6 +5,7 @@ import ru.vsu.cs.yesikov.math.Vector3f;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Model {
@@ -17,6 +18,13 @@ public class Model {
 	public Model() {
 
 	}
+    public Model(final ArrayList<Vector3f> vertices, final ArrayList<Vector2f> textureVertices, final ArrayList<Vector3f> normals, final ArrayList<Polygon> polygons) throws Exception {
+        this.vertices = vertices;
+        this.textureVertices = textureVertices;
+        this.polygons = polygons;
+        this.normals = normals;
+        recalculateNormals();
+    }
 
 	public ArrayList<Vector3f> getVertices() {return vertices;}
     public ArrayList<Polygon> getPolygons() {return polygons;}
@@ -37,7 +45,7 @@ public class Model {
         this.textureVertices = textureVertices;
     }
 
-    public void recalculateNormals(Model model) {
+    public void recalculateNormals() throws Exception {
         normals.clear();
         Map<Integer, Vector3f> vertexNormals = new HashMap<>();
 
@@ -110,6 +118,6 @@ public class Model {
         textureVertices = model.textureVertices;
         normals = model.getNormals();
         polygons = model.getPolygons();
-        recalculateNormals(model);
+        model.recalculateNormals();
     }
 }

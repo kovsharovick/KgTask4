@@ -25,6 +25,17 @@ public class Matrix4x4 implements Matrix{
         }
         return values[row][colum];
     }
+    public void setIdentity() {
+        for (int row = 0; row < values[0].length; row++) {
+            for (int col = 0; col < values.length; col++) {
+                if(row == col) {
+                    values[row][col] = 1;
+                    continue;
+                }
+                values[row][col] = 0;
+            }
+        }
+    }
 
     public void setValOfIndex(int colum, int row, float value) {
         if (values.length < row || values[0].length < colum) {

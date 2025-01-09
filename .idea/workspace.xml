@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="controller">
+    <list default="true" id="92beaa7b-bd3b-4c10-b82b-d7d23c22cf41" name="Changes" comment="new classes contrlcamera&#10;modimodel scene">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/yesikov/GuiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ru/vsu/cs/yesikov/fxml/gui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ru/vsu/cs/yesikov/fxml/gui.fxml" afterDir="false" />
@@ -49,7 +49,7 @@
     "JUnit.MathTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "control",
+    "git-widget-placeholder": "Merging 3__last",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Vova/Desktop/Java, C++, Python/CG3drender",
     "onboarding.tips.debug.path": "D:/Java, C++, Python/Java/KgTask4/src/main/java/ru/vsu/cs/yesikov/Main.java",
@@ -77,7 +77,7 @@
       <recent name="ru.vsu.cs.yesikov.math" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.yesikov.Main" />
       <module name="KgTask4" />
@@ -192,15 +192,7 @@
       <option name="project" value="LOCAL" />
       <updated>1736365441063</updated>
     </task>
-    <task id="LOCAL-00008" summary="controller">
-      <option name="closed" value="true" />
-      <created>1736372061662</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1736372061662</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -210,6 +202,7 @@
     <MESSAGE value="getNew" />
     <MESSAGE value="init" />
     <MESSAGE value="controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="controller" />
+    <MESSAGE value="new classes contrlcamera&#10;modimodel scene" />
+    <option name="LAST_COMMIT_MESSAGE" value="new classes contrlcamera&#10;modimodel scene" />
   </component>
 </project>
